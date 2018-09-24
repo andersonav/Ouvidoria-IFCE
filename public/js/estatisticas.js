@@ -3,7 +3,7 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
-        ['Ano', 'Elogios', 'Reclamações', 'Sugestões', 'Teste'],
+        ['Ano', 'Elogios', 'Reclamações', 'Sugestões', 'Testeeeeee'],
         ['2014', 1000, 400, 200, 333],
         ['2015', 1170, 460, 250, 332],
         ['2016', 660, 1120, 300, 232],
