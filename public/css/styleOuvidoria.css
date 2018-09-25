@@ -127,33 +127,33 @@ i.icon.content {
 .iconsSidebarFix{
     margin-top: 35px;
 }
-.ui.accordion a {
+.ui.accordion#accordionSidebar a {
     color:white !important;
 }
-.ui.accordion{
+.ui.accordion#accordionSidebar{
     font-size: 15px;
     color: white !important;
     margin-top: 40px;
 }
 
-.ui.accordion i{
+.ui.accordion#accordionSidebar i{
     font-size: 23px !important;
 }
-.ui.accordion span{
+.ui.accordion#accordionSidebar span{
     font-size: 17px !important;
 }
-.ui.accordion span i{
+.ui.accordion#accordionSidebar span i{
     font-size: 18px !important;
     margin-left: 5% !important;
     float: right;
 }
 
-.ui.accordion .title:not(.ui) {
+.ui.accordion#accordionSidebar .title:not(.ui) {
     color: white !important;
     text-align: justify;
     margin-bottom: 10px !important;
 }
-.ui.accordion .content a{
+.ui.accordion#accordionSidebar .content a{
     padding-left: 23%;
 }
 .title p{
@@ -183,7 +183,7 @@ i.icon.content {
 
 .title p {
 }
-.ui.accordion .title:not(.ui).activeAccordion {
+.ui.accordion#accordionSidebar .title:not(.ui).activeAccordion {
     background: white !important;
     border-left-style: solid !important;
     border-left-color: #34483F !important;
@@ -498,7 +498,7 @@ i.icon.content {
     .ui.accordion i {
         font-size: 17px !important;
     }
-    .ui.accordion span {
+    .ui.accordion#accordionSidebar span {
         font-size: 16px !important;
     }
     .title p {

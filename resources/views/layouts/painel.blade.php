@@ -33,7 +33,7 @@ and open the template in the editor.
                     <i class="openbtn icon content" id="btnDevices"></i>
                     <img src="{{ asset('img/Logo ouvidoria - branca.png') }}" />
                 </div>
-                <div class="ui accordion">
+                <div class="ui accordion" id="accordionSidebar">
                     <div class="title" id="paginaInicial">
                         <p class="pContent"><i class="home layout icon"></i><span>Página Inicial</span></p>
                     </div>
@@ -51,9 +51,6 @@ and open the template in the editor.
                     </div>
                     <div class="title" id="perguntasFrequentes">
                         <p class="pContent"><i class="question icon"></i><span>Perguntas Frequentes</span></p>
-                    </div>
-                    <div class="title" id="outrosContatos">
-                        <p class="pContent"><i class="info icon"></i><span>Outros Contatos</span></p>
                     </div>
                 </div>
                 <div class="iconsSidebarFix">
@@ -74,9 +71,6 @@ and open the template in the editor.
                     </div>
                     <div class="ui dropdown item displaynone iconShort">
                         <i class="question icon" id="perguntasFrequentes"></i>
-                    </div>
-                    <div class="ui dropdown item displaynone iconShort">
-                        <i class="info icon" id="outrosContatos"></i>
                     </div>
                 </div>
             </div>

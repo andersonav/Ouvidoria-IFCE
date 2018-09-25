@@ -127,9 +127,4 @@ class ManifestacaoController extends Controller {
         return response()->json($select);
     }
 
-    public function estatisticas() {
-
-        return view('estatisticas');
-    }
-
 }

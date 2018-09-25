@@ -237,7 +237,7 @@
 </div>
 
 <div class="ui small modal">
-    <div class="header">Header</div>
+    <div class="header">Manifestação</div>
     <div class="content">
         <div class="ui comments" id="comentariosInBuscarManifestacao">
             <div class="comment">
@@ -279,9 +279,7 @@
         </div>
     </div>
     <div class="actions">
-        <div class="ui approve button">Approve</div>
-        <div class="ui button">Neutral</div>
-        <div class="ui cancel button">Cancel</div>
+        <div class="ui cancel button">Cancelar</div>
     </div>
 </div>
 <script type="text/javascript" src="{{ asset('js/buscarManifestacao.js') }}" ></script>
