@@ -62,7 +62,8 @@ class ManifestacaoController extends Controller {
 // Executando as configurações do CURL
         $json = curl_exec($curl);
 // Retornando o dados em formato JSON
-        echo utf8_decode($json);
+//        echo utf8_decode($json);
+        return response()->json($json, 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
 // Fechando a conexão CURL
         curl_close($curl);
     }
@@ -123,7 +124,10 @@ class ManifestacaoController extends Controller {
     }
 
     public function getDataManifestacao(Request $request) {
-        $select = DB::table('manifestacao')->where('idManifestacao', '=', $request->idManifestacao)->get();
+        $select = DB::table('manifestacao')
+                        ->join('tipo_resposta_manifestacao', 'manifestacao.idTipoRespostaManifestacaoFk', '=', 'tipo_resposta_manifestacao.idTipoRespostaManifestacao')
+                        ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
+                        ->where('idManifestacao', '=', $request->idManifestacao)->get();
         return response()->json($select);
     }
 

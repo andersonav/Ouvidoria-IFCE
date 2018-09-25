@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-$("input[name=searchById]").keyup(function () {
-    var idManifestacao = $(this).val();
-
+$("#searchById").click(function () {
+    var idManifestacao = $("#inputSearchId").val();
+    console.log("TEste");
     $.ajax({
         type: 'POST',
         url: '/getDataManifestacao',
@@ -18,8 +18,31 @@ $("input[name=searchById]").keyup(function () {
             idManifestacao: idManifestacao
         }, success: function (data, textStatus, jqXHR) {
             if (data.length > 0) {
+                var newDate = new Date(data[0].created_at).toUTCString();
+                $(".small.modal .header").html(data[0].descricaoTipoManifestacao + " - " + data[0].assuntoManifestacao);
+//                var date = newDate.toDateString();
+                var nomeUsuario = returnNameUser(data[0].idTipoIdentificacaoFk, data[0].nomeUsuario);
+
+                $(".small.modal .content#pergunta .author").html(nomeUsuario);
+                $(".small.modal .content#pergunta .metadata .date").html(newDate);
                 $('.small.modal').modal('show');
             }
         }
     });
 });
+
+$("#inputSearchId").keyup(function (e) {
+    if (e.keyCode == 13) {
+        $("#searchById").trigger('click');
+    }
+});
+
+function returnNameUser(idTipoIdentificacaoFk, nome) {
+    var nomeUsuario = "";
+    if (idTipoIdentificacaoFk == 1) {
+        nomeUsuario = nome;
+    } else {
+        nomeUsuario = "Anônimo";
+    }
+    return nomeUsuario;
+}

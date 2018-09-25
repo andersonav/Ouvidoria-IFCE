@@ -1,13 +1,13 @@
 <h1 class="textoTopoOuvidoria"><i class="search icon"></i>&nbsp;&nbsp;Buscar Manifestação</h1>
 <div class="ui divider"></div>
 <div class="">
-    <form class="ui form">
+    <form class="ui form" action="">
         <h4 class="ui header">De acordo com seu número gerado, por favor coloque no campo abaixo</h4>
         <h2 class="ui dividing header">ID Manifestação</h2>
         <div class="field">
             <div class="ui icon input">
-                <input type="text" placeholder="Procurar..." name="searchById" id="searchById">
-                <i class="inverted circular search link icon" style="background-color: #34483F !important;"></i>
+                <input type="text" placeholder="Procurar..." id="inputSearchId">
+                <i class="inverted circular search link icon" name="searchById" style="background-color: #34483F !important;" id="searchById"></i>
             </div>
         </div>
         <h2 class="ui dividing header">Manifestações recentes</h2>
@@ -244,7 +244,7 @@
                 <a class="avatar">
                     <img src="{{asset('img/user-no.png')}}">
                 </a>
-                <div class="content">
+                <div class="content" id="pergunta">
                     <a class="author">David Silva</a>
                     <div class="metadata">
                         <span class="date">Ontem às 17:42PM</span>
