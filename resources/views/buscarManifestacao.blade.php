@@ -1,7 +1,7 @@
 <h1 class="textoTopoOuvidoria"><i class="search icon"></i>&nbsp;&nbsp;Buscar Manifestação</h1>
 <div class="ui divider"></div>
 <div class="">
-    <form class="ui form" action="">
+    <form class="ui form" action="javascript:void(0);">
         <h4 class="ui header">De acordo com seu número gerado, por favor coloque no campo abaixo</h4>
         <h2 class="ui dividing header">ID Manifestação</h2>
         <div class="field">

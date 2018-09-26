@@ -10,6 +10,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.css') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}"/>
         <link href="{{ asset('img/favicon.ico') }}" rel="shortcut icon" type="image/vnd.microsoft.icon" />   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/styleOuvidoria.css') }}"/>

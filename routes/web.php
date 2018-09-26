@@ -31,6 +31,9 @@ Route::post("/getDataManifestacao", 'ManifestacaoController@getDataManifestacao'
 
 /* ESTATÍSTICAS */
 Route::post("/estatisticas", 'EstatisticasController@estatisticas')->name('estatisticas');
+Route::post("/getLegendsEstatistic", 'EstatisticasController@getLegendsEstatistic')->name('getLegendsEstatistic');
+Route::post("/getEstatistics", 'EstatisticasController@getEstatistics')->name('getEstatistics');
+
 
 /* PERGUNTAS FREQUENTES */
 Route::post("/perguntasFrequentes", 'PerguntasFrequentesController@perguntasFrequentes')->name('perguntasFrequentes');

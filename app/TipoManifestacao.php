@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Manifestacao extends Model {
+class TipoManifestacao extends Model {
 
-    protected $table = 'manifestacao';
+    protected $table = "tipo_manifestacao";
     protected $guarded = [];
 
 }
