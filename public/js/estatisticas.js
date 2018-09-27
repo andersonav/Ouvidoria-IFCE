@@ -1,12 +1,35 @@
 google.charts.load('current', {'packages': ['bar']});
 google.charts.setOnLoadCallback(drawChart);
 
+var arrayAuxColors = [];
+
+
 function drawChart() {
+    var arrayLegends = getLegendsEstatistic();
+    var arrayAuxEstatistics = getEstatistics();
+    var dataArray = [
+        arrayLegends
+    ];
+    for (var i = 0; i < arrayAuxEstatistics.length; i++) {
+        dataArray.push(arrayAuxEstatistics[i]);
+    }
+    var data = google.visualization.arrayToDataTable(dataArray);
+    var options = {
+//        chart: {
+//            title: 'Company Performance',
+//            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+//        },
+        bars: 'vertical',
+        vAxis: {format: 'decimal'},
+        height: 500,
+        colors: arrayAuxColors
+    };
+    var chart = new google.charts.Bar(document.getElementById('chart_div'));
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+}
 
-
-    var arrayAux = ['Ano'];
-    var arrayAuxColors = [];
-    var arrayAuxEstatistics = [];
+function getLegendsEstatistic() {
+    var arrayLegends = ['Ano'];
     $.ajax({
         url: "/getLegendsEstatistic",
         type: 'POST',
@@ -16,12 +39,16 @@ function drawChart() {
         },
         success: function (data, textStatus, jqXHR) {
             for (var i = 0; i < data.length; i++) {
-                arrayAux.push(data[i].descricaoTipoManifestacao);
+                arrayLegends.push(data[i].descricaoTipoManifestacao);
                 arrayAuxColors.push(data[i].colorTipoManifestacao);
             }
         }
     });
+    return arrayLegends;
+}
 
+function getEstatistics() {
+    var arrayAuxEstatistics = [];
     $.ajax({
         url: "/getEstatistics",
         type: 'POST',
@@ -37,27 +64,5 @@ function drawChart() {
             }
         }
     });
-    var data = google.visualization.arrayToDataTable([
-        arrayAux,
-//        ['2014', 1000, 400, 200, 333],
-//        ['2015', 1170, 460, 250, 332],
-        arrayAuxEstatistics[0],
-        arrayAuxEstatistics[1]
-    ]);
-
-    var options = {
-//        chart: {
-//            title: 'Company Performance',
-//            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-//        },
-        bars: 'vertical',
-        vAxis: {format: 'decimal'},
-        height: 500,
-        colors: arrayAuxColors
-    };
-
-    var chart = new google.charts.Bar(document.getElementById('chart_div'));
-
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-
+    return arrayAuxEstatistics;
 }
