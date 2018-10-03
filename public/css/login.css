@@ -1,0 +1,125 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03/10/2018, 13:41:53
+    Author     : andersonalves
+*/
+.ui.vertical.segment{
+    border-bottom: none; 
+}
+
+.image{
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    margin-top: 2% !important;
+    width: 25% !important;
+}
+.imageIfce{
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    margin-top: 3% !important;
+    width: 45% !important;
+}
+#formCenter{
+    background-color: #006B43; 
+    width: 100% !important;
+    height: auto !important;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-bottom: -155px !important;
+    padding-bottom: 60px !important;
+    padding: 1rem;
+    text-align: center;
+}
+#formCenter .divForm{
+    width: 50% !important;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+    margin-top: 70px !important;
+}
+.login-triangle {
+    width: 0;
+    margin-right: auto;
+    margin-left: auto;
+    border: 12px solid transparent;
+    border-top-color: white;
+    margin-top: -15px;
+}
+.ui.message{
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.ui.message{
+    margin-bottom: 0px !important;
+}
+.ui.fluid.large.teal.submit.button{
+    background-color: transparent !important;
+    height: 50px;
+    border: 2px solid #fff;
+    color: white;
+}
+.ui.fluid.large.teal.submit.button .spanLogin{
+    float: left;
+}
+.ui.fluid.large.teal.submit.button .spanIcon{
+    float: right;
+}
+.informacoes{
+    color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+}
+
+@media (max-width: 766px){
+
+    #formCenter{
+        position: relative;
+    }
+
+    #formCenter .divForm{
+        width: 80% !important;
+    }
+
+    .imageIfce{
+        height: auto !important;
+        width: 50% !important;
+    }
+
+    .image{
+        height: auto !important;
+        width: 50% !important;
+    }
+
+    .ui.message{
+        margin-bottom: 48px !important;
+    }
+
+}
+
+@media (min-width: 1800px){
+    .imageIfce{
+        width: 28% !important;
+    }
+
+    .image{
+        width: 14% !important;
+    }	
+}
+@media (min-height: 833px){
+    #formCenter{
+        position: absolute !important;
+        margin-bottom: 0px !important;
+    }
+}

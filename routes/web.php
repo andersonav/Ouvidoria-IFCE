@@ -11,7 +11,11 @@
   |
  */
 
-Route::get('/', function () {
+//Route::get('/', function () {
+//    return view('layouts.login');
+//});
+
+Route::get('/ouvidoria', function () {
     return view('layouts.painel');
 });
 
@@ -38,3 +42,12 @@ Route::post("/getEstatistics", 'EstatisticasController@getEstatistics')->name('g
 /* PERGUNTAS FREQUENTES */
 Route::post("/perguntasFrequentes", 'PerguntasFrequentesController@perguntasFrequentes')->name('perguntasFrequentes');
 
+
+/* RESPONDER MANIFESTAÇÕES */
+Route::post("/responderManifestacoes", 'ResponderManifestacoes@responderManifestacoes')->name('responderManifestacoes');
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::post('/login', 'Auth\LoginController@login')->name('login');
