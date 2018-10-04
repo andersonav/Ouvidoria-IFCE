@@ -46,6 +46,9 @@ Route::post("/perguntasFrequentes", 'PerguntasFrequentesController@perguntasFreq
 /* RESPONDER MANIFESTAÇÕES */
 Route::post("/responderManifestacoes", 'ResponderManifestacoes@responderManifestacoes')->name('responderManifestacoes');
 
+/* EDITAR MANIFESTAÇÕES */
+Route::post("/editarManifestacoes", 'EditarManifestacoes@editarManifestacoes')->name('editarManifestacoes');
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');

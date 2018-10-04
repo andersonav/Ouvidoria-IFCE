@@ -3,8 +3,8 @@
 <div class="">
     <form class="ui form" action="javascript:void(0);">
         <h4 class="ui header">De acordo com seu número gerado, por favor coloque no campo abaixo</h4>
-        <h2 class="ui dividing header">ID Manifestação</h2>
-        <div class="field">
+        <h2 class="ui dividing header">Número da Manifestação</h2>
+        <div class="field" id="fieldInputPesquisarManifestacao">
             <div class="ui icon input">
                 <input type="text" placeholder="Procurar..." id="inputSearchId">
                 <i class="inverted circular search link icon" name="searchById" style="background-color: #34483F !important;" id="searchById"></i>
@@ -236,7 +236,7 @@
     </form>
 </div>
 
-<div class="ui small modal">
+<div class="ui small modal" id="modalBuscarManifestacao">
     <div class="header">Manifestação</div>
     <div class="content">
         <div class="ui comments" id="comentariosInBuscarManifestacao">

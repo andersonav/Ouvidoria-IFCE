@@ -11,7 +11,7 @@ var table = $('#tabela').DataTable({
     }
 });
 
-$(".actionResponder").click(function () {
+$(".actionEditar").click(function () {
     var valorId = $(this).attr("id");
     console.log(valorId);
     $('#modalRespostaManifestacao').modal('show');

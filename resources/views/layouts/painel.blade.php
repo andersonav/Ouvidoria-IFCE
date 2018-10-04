@@ -14,10 +14,13 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}"/>
         <link href="{{ asset('img/favicon.ico') }}" rel="shortcut icon" type="image/vnd.microsoft.icon" />   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/styleOuvidoria.css') }}"/>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/loader.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css" />
+
         <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/semantic.min.js') }}" ></script>
         <script type="text/javascript" src="{{ asset('js/painel.js') }}" ></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.semanticui.min.js"></script>
     </head>
     <body>
         <div id="loader"></div>
@@ -52,8 +55,12 @@ and open the template in the editor.
                     <div class="title" id="perguntasFrequentes">
                         <p class="pContent"><i class="question icon"></i><span>Perguntas Frequentes</span></p>
                     </div>
-                    <div class="title" id="responderManifestacoes">
-                        <p class="pContent"><i class="reply icon"></i><span>Responder Manifestações</span></p>
+                    <div class="title" id="manifestacoes">
+                        <p class="pContent"><i class="reply icon"></i><span>Manifestações</span></p>
+                    </div>
+                    <div class="content" id="manifestacoes">
+                        <a class="item active" href="javascript:void(0);" id="responderManifestacoes">Pendentes</a>
+                        <a class="item active" href="javascript:void(0);" id="editarManifestacoes">Respondidas</a>
                     </div>
                 </div>
                 <div class="iconsSidebarFix">
@@ -76,7 +83,7 @@ and open the template in the editor.
                         <i class="question icon" id="perguntasFrequentes"></i>
                     </div>
                     <div class="ui dropdown item displaynone iconShort">
-                        <i class="reply icon" id="responderManifestacoes"></i>
+                        <i class="reply icon" id="manifestacoes"></i>
                     </div>
                 </div>
             </div>

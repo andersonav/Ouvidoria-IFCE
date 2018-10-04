@@ -23,9 +23,9 @@ $("#searchById").click(function () {
 //                var date = newDate.toDateString();
                 var nomeUsuario = returnNameUser(data[0].idTipoIdentificacaoFk, data[0].nomeUsuario);
 
-                $(".small.modal .content#pergunta .author").html(nomeUsuario);
-                $(".small.modal .content#pergunta .metadata .date").html(newDate);
-                $('.small.modal').modal('show');
+                $("#modalBuscarManifestacao .content#pergunta .author").html(nomeUsuario);
+                $("#modalBuscarManifestacao .content#pergunta .metadata .date").html(newDate);
+                $('#modalBuscarManifestacao').modal('show');
             }
         }
     });

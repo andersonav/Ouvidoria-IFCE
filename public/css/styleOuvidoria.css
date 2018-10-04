@@ -128,7 +128,7 @@ i.icon.content {
     margin-top: 35px;
 }
 .ui.accordion#accordionSidebar a {
-    color:white !important;
+    color:white;
 }
 .ui.accordion#accordionSidebar{
     font-size: 15px;
@@ -153,8 +153,11 @@ i.icon.content {
     text-align: justify;
     margin-bottom: 10px !important;
 }
+.ui.accordion#accordionSidebar .title:not(.ui).activeAccordion span {
+    margin-left: 6% !important;
+}
 .ui.accordion#accordionSidebar .content a{
-    padding-left: 23%;
+    padding-left: 26%;
 }
 .title p{
     margin-left: 15px;
@@ -173,6 +176,9 @@ i.icon.content {
     -webkit-transition-duration: 0.1s !important;
     background-color: #34483F !important;
     height: 67px;
+}
+.ui.vertical.menu .active.item{
+    background: transparent !important;
 }
 .pusher a{
     color:white;
@@ -819,6 +825,9 @@ i.icon.content {
 
 #comentariosInBuscarManifestacao{
     margin: 1% !important;
+}
+#fieldInputPesquisarManifestacao{
+    width: 20% !important;
 }
 
 

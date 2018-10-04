@@ -134,7 +134,16 @@ $(document).ready(function () {
         showElement(".ui.accordion .content", valorId);
         addClassActive(".title", valorId, "activeAccordion");
         addClassActive(".iconsSidebarFix .iconShort .icon", valorId, "active");
-        functionAjaxToLoadPage(valorId);
+        $(".content .item").each(function () {
+            $(this).css("color", "white");
+        });
+        if ($(".content#" + valorId).attr("id") != null) {
+            functionAjaxToLoadPageToContent(valorId);
+        } else {
+            functionAjaxToLoadPage(valorId);
+
+        }
+
 
     });
 
@@ -147,7 +156,12 @@ $(document).ready(function () {
         showElement(".ui.accordion .content", valorId);
         addClassActive(".title", valorId, "activeAccordion");
         addClassActive(".iconsSidebarFix .iconShort .icon", valorId, "active");
-        functionAjaxToLoadPage(valorId);
+        if ($(".content#" + valorId).attr("id") != null) {
+
+        } else {
+            functionAjaxToLoadPage(valorId);
+
+        }
     });
 
     function clearClassActive(elemento, valorClass) {
@@ -170,6 +184,25 @@ $(document).ready(function () {
 
     function showElement(elemento, valorId) {
         $(elemento + "#" + valorId).show(500);
+    }
+
+    function functionAjaxToLoadPageToContent(valorId) {
+        $(".content#" + valorId + " .item").click(function () {
+            var valorIdToA = $(this).attr("id");
+            $(".content#" + valorId + " .item").each(function () {
+                $(this).css("color", "white");
+            });
+            $(".content#" + valorId + " .item#" + valorIdToA).css("color", "gold");
+            $.ajax({
+                url: "/" + valorIdToA,
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }, success: function (data, textStatus, jqXHR) {
+                    $("#containerToInformations").html(data);
+                }
+            });
+        });
     }
 
     function functionAjaxToLoadPage(valorId) {

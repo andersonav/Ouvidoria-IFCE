@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 
-class ResponderManifestacoes extends Controller {
+class EditarManifestacoes extends Controller {
 
-    public function responderManifestacoes() {
+    public function editarManifestacoes() {
         $manifestacoes = DB::table('manifestacao')
                 ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
                 ->orderBy('manifestacao.created_at', 'DESC')
-                ->where('manifestacao.idTipoRespostaManifestacaoFk', '=', 2)
+                ->where('manifestacao.idTipoRespostaManifestacaoFk', '=', 1)
                 ->get();
 
-        return view('responderManifestacoes', compact('manifestacoes'));
+        return view('editarManifestacoes', compact('manifestacoes'));
     }
 
 }

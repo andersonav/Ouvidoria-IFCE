@@ -35,7 +35,7 @@ and open the template in the editor.
                     </div>
                     <div class="center aligned row">
                         <div class="column">
-                            <img src="{{ asset('img/logo-ifce.png') }}" class="image">
+                            <img src="{{ asset('img/logo_ouvidoria_vermelha.png') }}" class="image">
                         </div>
                     </div>
                 </div>

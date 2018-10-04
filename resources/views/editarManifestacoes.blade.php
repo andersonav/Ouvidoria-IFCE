@@ -1,4 +1,4 @@
-<h1 class="textoTopoOuvidoria"><i class="reply icon"></i>&nbsp;&nbsp;Responder Manifestações</h1>
+<h1 class="textoTopoOuvidoria"><i class="reply icon"></i>&nbsp;&nbsp;Editar Manifestações</h1>
 <div class="ui divider"></div>
 <div class="">
     <form class="ui form" action="javascript:void(0);">
@@ -20,7 +20,8 @@
                     <td>{{$manifestacao->descricaoTipoManifestacao}}</td>
                     <td>{{$manifestacao->mensagemManifestacao}}</td>
                     <td>
-                        <a class="ui tiny red icon button actionResponder" data-tooltip="Responder" id="{{$manifestacao->idManifestacao}}"><i class="reply icon"></i></a>
+                        <a class="ui tiny red icon button actionEdit" data-tooltip="Editar" id="{{$manifestacao->idManifestacao}}"><i class="pencil icon"></i></a>
+                        <a class="ui tiny red icon button actionDelete" data-tooltip="Deletar" id="{{$manifestacao->idManifestacao}}"><i class="trash icon"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -67,4 +68,4 @@
         <div class="ui cancel button">Cancelar</div>
     </div>
 </div>
-<script type="text/javascript" src="{{asset('js/responderManifestacoes.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/editarManifestacoes.js')}}"></script>
