@@ -124,14 +124,35 @@ $(document).ready(function () {
     }
 
 
-    $(".ui.accordion .title").click(function () {
+    $(".ui.accordion#accordionSidebar .title").click(function () {
         var valorId = $(this).attr("id");
-        clearClassActive(".ui.accordion .title", "active");
-        clearClassActive(".ui.accordion .title", "activeAccordion");
-        clearClassActive(".ui.accordion .content", "active");
+        clearClassActive(".ui.accordion#accordionSidebar .title", "active");
+        clearClassActive(".ui.accordion#accordionSidebar .title", "activeAccordion");
+        clearClassActive(".ui.accordion#accordionSidebar .content", "active");
         clearClassActive(".iconsSidebarFix .iconShort .icon", "active");
         hideElement(valorId);
-        showElement(".ui.accordion .content", valorId);
+        showElement(".ui.accordion#accordionSidebar .content", valorId);
+        addClassActive("#accordionSidebar .title", valorId, "activeAccordion");
+        addClassActive(".iconsSidebarFix .iconShort .icon", valorId, "active");
+        $("#accordionSidebar .content .item").each(function () {
+            $(this).css("color", "white");
+        });
+        if ($("#accordionSidebar .content#" + valorId).attr("id") != null) {
+            functionAjaxToLoadPageToContent(valorId);
+        } else {
+            functionAjaxToLoadPage(valorId);
+
+        }
+        logicIconsDropdown(valorId);
+    });
+
+    $(".iconsSidebarFix .iconShort .icon").click(function () {
+        var valorId = $(this).attr("id");
+        clearClassActive(".ui.accordion#accordionSidebar .title", "active");
+        clearClassActive(".ui.accordion#accordionSidebar .title", "activeAccordion");
+        clearClassActive(".iconsSidebarFix .iconShort .icon", "active");
+        hideElement(valorId);
+        showElement(".ui.accordion#accordionSidebar .content", valorId);
         addClassActive(".title", valorId, "activeAccordion");
         addClassActive(".iconsSidebarFix .iconShort .icon", valorId, "active");
         $(".content .item").each(function () {
@@ -141,27 +162,8 @@ $(document).ready(function () {
             functionAjaxToLoadPageToContent(valorId);
         } else {
             functionAjaxToLoadPage(valorId);
-
         }
-
-
-    });
-
-    $(".iconsSidebarFix .iconShort .icon").click(function () {
-        var valorId = $(this).attr("id");
-        clearClassActive(".ui.accordion .title", "active");
-        clearClassActive(".ui.accordion .title", "activeAccordion");
-        clearClassActive(".iconsSidebarFix .iconShort .icon", "active");
-        hideElement(valorId);
-        showElement(".ui.accordion .content", valorId);
-        addClassActive(".title", valorId, "activeAccordion");
-        addClassActive(".iconsSidebarFix .iconShort .icon", valorId, "active");
-        if ($(".content#" + valorId).attr("id") != null) {
-
-        } else {
-            functionAjaxToLoadPage(valorId);
-
-        }
+        logicIconsDropdown(valorId);
     });
 
     function clearClassActive(elemento, valorClass) {
@@ -170,12 +172,26 @@ $(document).ready(function () {
         });
     }
 
+    function eachAdicionarClasse(elemento, valorClass) {
+        $(elemento).each(function () {
+            $(this).addClass(valorClass);
+        });
+    }
+
+    function removeClassElement(elemento, valorClass) {
+        $(elemento).removeClass(valorClass);
+    }
+
+    function addClassElement(elemento, valorClass) {
+        $(elemento).addClass(valorClass);
+    }
+
     function addClassActive(elemento, valorId, valorClass) {
         $(elemento + "#" + valorId).addClass(valorClass);
     }
 
     function hideElement(valorId) {
-        $(".ui.accordion .content").each(function () {
+        $(".ui.accordion#accordionSidebar .content").each(function () {
             if ($(this).attr("id") != valorId) {
                 $(this).hide(500);
             }
@@ -186,13 +202,29 @@ $(document).ready(function () {
         $(elemento + "#" + valorId).show(500);
     }
 
+    function logicIconsDropdown(valorId) {
+        clearClassActive("#accordionSidebar .title span i", "caret");
+        clearClassActive("#accordionSidebar .title span i", "down");
+        clearClassActive("#accordionSidebar .title span i", "icon");
+        eachAdicionarClasse("#accordionSidebar .title span i", "dropdown");
+        eachAdicionarClasse("#accordionSidebar .title span i", "icon");
+
+        var elemento = "#accordionSidebar .title.activeAccordion#" + valorId + " span i#" + valorId;
+        removeClassElement(elemento, "dropdown");
+        removeClassElement(elemento, "icon");
+
+        addClassElement(elemento, "caret");
+        addClassElement(elemento, "down");
+        addClassElement(elemento, "icon");
+    }
+
     function functionAjaxToLoadPageToContent(valorId) {
-        $(".content#" + valorId + " .item").click(function () {
+        $("#accordionSidebar .content#" + valorId + " .item").click(function () {
             var valorIdToA = $(this).attr("id");
-            $(".content#" + valorId + " .item").each(function () {
+            $("#accordionSidebar .content#" + valorId + " .item").each(function () {
                 $(this).css("color", "white");
             });
-            $(".content#" + valorId + " .item#" + valorIdToA).css("color", "gold");
+            $("#accordionSidebar .content#" + valorId + " .item#" + valorIdToA).css("color", "gold");
             $.ajax({
                 url: "/" + valorIdToA,
                 type: 'POST',
@@ -217,9 +249,26 @@ $(document).ready(function () {
         });
     }
 
-    $(".ui.accordion .title").each(function () {
+    $(".ui.accordion#accordionSidebar .title").each(function () {
         if ($(this).hasClass("activeAccordion")) {
             $(this).trigger("click");
+        }
+    });
+
+    $("body").click(function (e) {
+        if ($(e.target).hasClass("openDivNone")) {
+
+        } else {
+            console.log("Diferente");
+            $(".divMae").each(function () {
+                $(this).removeClass("displayblock");
+                $(this).addClass("displaynone");
+            });
+
+            $("#iconsAndInformationsUser .arrow").each(function () {
+                $(this).removeClass("displayblock");
+                $(this).addClass("displaynone");
+            });
         }
     });
 

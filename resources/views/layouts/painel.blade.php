@@ -56,7 +56,7 @@ and open the template in the editor.
                         <p class="pContent"><i class="question icon"></i><span>Perguntas Frequentes</span></p>
                     </div>
                     <div class="title" id="manifestacoes">
-                        <p class="pContent"><i class="reply icon"></i><span>Manifestações</span></p>
+                        <p class="pContent"><i class="reply icon"></i><span>Manifestações<span><i class="dropdown icon" id="manifestacoes"></i></span></span></p>
                     </div>
                     <div class="content" id="manifestacoes">
                         <a class="item active" href="javascript:void(0);" id="responderManifestacoes">Pendentes</a>

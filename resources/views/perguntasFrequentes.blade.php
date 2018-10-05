@@ -1,6 +1,6 @@
 <h1 class="textoTopoOuvidoria"><i class="question icon"></i>&nbsp;&nbsp;Perguntas Frequentes</h1>
 <div class="ui divider"></div>
-<div class="ui styled fluid accordion">
+<div class="ui styled fluid accordion" id="accordionPerguntasFrequentes">
     <div class="title active">
         <i class="dropdown icon"></i>
         Como cadastrar biometria?

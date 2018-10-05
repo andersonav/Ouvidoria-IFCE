@@ -5,18 +5,18 @@
         <group>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/layouts/painel.blade.php</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/public/css/styleOuvidoria.css</file>
-            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/public/css/login.css</file>
-            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/app/Http/Controllers/HomeController.php</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/routes/web.php</file>
-            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/auth/login.blade.php</file>
-            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/public/js/login.js</file>
+            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/editarManifestacoes.blade.php</file>
+            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/app/Http/Controllers/ManifestacaoController.php</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/buscarManifestacao.blade.php</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/app/Http/Controllers/ResponderManifestacoes.php</file>
-            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/layouts/login.blade.php</file>
-            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/app/Http/Controllers/Auth/LoginController.php</file>
+            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/abrirManifestacao.blade.php</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/public/js/buscarManifestacao.js</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/public/js/responderManifestacoes.js</file>
+            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/public/js/painel.js</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/responderManifestacoes.blade.php</file>
+            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/app/Http/Controllers/EditarManifestacoes.php</file>
+            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/public/js/editarManifestacoes.js</file>
         </group>
     </open-files>
 </project-private>
