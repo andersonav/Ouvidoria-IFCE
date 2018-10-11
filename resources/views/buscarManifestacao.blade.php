@@ -13,18 +13,33 @@
         <h2 class="ui dividing header">Manifestações recentes</h2>
         <div class="field">
             <div class="ui comments" id="comentariosInBuscarManifestacao">
+                @empty($manifestacoesRespondidasRecentes)
+                <h4 class="ui header">Ainda não existem manifestações respondidas.</h4>
+                @endempty
                 @foreach($manifestacoesRespondidasRecentes as $manifestacaRespondidaRecente)
                 <div class="comment">
                     <a class="avatar">
                         <img src="{{asset('img/matt.jpg')}}">
                     </a>
                     <div class="content">
-                        <a class="author">Anderson Alves</a>
+                        @php
+                        $nomeUsuario
+                        @endphp
+                        @if($manifestacaRespondidaRecente->nomeUsuario)
+                        @php
+                        $nomeUsuario = $manifestacaRespondidaRecente->nomeUsuario
+                        @endphp
+                        @else
+                        @php
+                        $nomeUsuario = "Anônimo"
+                        @endphp
+                        @endif
+                        <a class="author">{{$nomeUsuario}}</a>
                         <div class="metadata">
-                            <span class="date">Ontem às 17:42PM</span>
+                            <span class="date">{{ date( 'd/m/Y' , strtotime($manifestacaRespondidaRecente->created_at))}}</span>
                         </div>
                         <div class="text">
-                            Como está o sistema das catracas?
+                            {{$manifestacaRespondidaRecente->mensagemManifestacao}}
                         </div>
                         <!--                    <div class="actions">
                                                 <a class="reply">Reply</a>
@@ -38,10 +53,10 @@
                             <div class="content">
                                 <a class="author">IFCE</a>
                                 <div class="metadata">
-                                    <span class="date">Hoje às 14:30PM</span>
+                                    <span class="date"> {{date( 'd/m/Y' , strtotime($manifestacaRespondidaRecente->respostaDataCreated))}}</span>
                                 </div>
                                 <div class="text">
-                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
+                                    {{$manifestacaRespondidaRecente->descricaoRespostaManifestacao}}
                                 </div>
                                 <!--                            <div class="actions">
                                                                 <a class="reply">Reply</a>
@@ -51,189 +66,189 @@
                     </div>
                 </div>
                 @endforeach
-                <div class="comment">
-                    <a class="avatar">
-                        <img src="{{asset('img/user-no.png')}}">
-                    </a>
-                    <div class="content">
-                        <a class="author">Thiago Valente</a>
-                        <div class="metadata">
-                            <span class="date">Ontem às 17:42PM</span>
-                        </div>
-                        <div class="text">
-                            Como está o sistema das catracas?
-                        </div>
-                        <!--                    <div class="actions">
-                                                <a class="reply">Reply</a>
-                                            </div>-->
-                    </div>
-                    <div class="comments">
-                        <div class="comment">
-                            <a class="avatar">
-                                <img src="{{asset('img/ifce.png')}}">
-                            </a>
-                            <div class="content">
-                                <a class="author">IFCE</a>
-                                <div class="metadata">
-                                    <span class="date">Hoje às 14:30PM</span>
-                                </div>
-                                <div class="text">
-                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
-                                </div>
-                                <!--                            <div class="actions">
+                <!--                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="{{asset('img/user-no.png')}}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Thiago Valente</a>
+                                        <div class="metadata">
+                                            <span class="date">Ontem às 17:42PM</span>
+                                        </div>
+                                        <div class="text">
+                                            Como está o sistema das catracas?
+                                        </div>
+                                                            <div class="actions">
                                                                 <a class="reply">Reply</a>
-                                                            </div>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <a class="avatar">
-                        <img src="{{asset('img/matt.jpg')}}">
-                    </a>
-                    <div class="content">
-                        <a class="author">Matheus Moreira</a>
-                        <div class="metadata">
-                            <span class="date">Ontem às 17:42PM</span>
-                        </div>
-                        <div class="text">
-                            Como está o sistema das catracas?
-                        </div>
-                        <!--                    <div class="actions">
-                                                <a class="reply">Reply</a>
-                                            </div>-->
-                    </div>
-                    <div class="comments">
-                        <div class="comment">
-                            <a class="avatar">
-                                <img src="{{asset('img/ifce.png')}}">
-                            </a>
-                            <div class="content">
-                                <a class="author">IFCE</a>
-                                <div class="metadata">
-                                    <span class="date">Hoje às 14:30PM</span>
+                                                            </div>
+                                    </div>
+                                    <div class="comments">
+                                        <div class="comment">
+                                            <a class="avatar">
+                                                <img src="{{asset('img/ifce.png')}}">
+                                            </a>
+                                            <div class="content">
+                                                <a class="author">IFCE</a>
+                                                <div class="metadata">
+                                                    <span class="date">Hoje às 14:30PM</span>
+                                                </div>
+                                                <div class="text">
+                                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
+                                                </div>
+                                                                            <div class="actions">
+                                                                                <a class="reply">Reply</a>
+                                                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text">
-                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
-                                </div>
-                                <!--                            <div class="actions">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="{{asset('img/matt.jpg')}}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Matheus Moreira</a>
+                                        <div class="metadata">
+                                            <span class="date">Ontem às 17:42PM</span>
+                                        </div>
+                                        <div class="text">
+                                            Como está o sistema das catracas?
+                                        </div>
+                                                            <div class="actions">
                                                                 <a class="reply">Reply</a>
-                                                            </div>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <a class="avatar">
-                        <img src="{{asset('img/user-no.png')}}">
-                    </a>
-                    <div class="content">
-                        <a class="author">Maurício Abreu</a>
-                        <div class="metadata">
-                            <span class="date">Ontem às 17:42PM</span>
-                        </div>
-                        <div class="text">
-                            Como está o sistema das catracas?
-                        </div>
-                        <!--                    <div class="actions">
-                                                <a class="reply">Reply</a>
-                                            </div>-->
-                    </div>
-                    <div class="comments">
-                        <div class="comment">
-                            <a class="avatar">
-                                <img src="{{asset('img/ifce.png')}}">
-                            </a>
-                            <div class="content">
-                                <a class="author">IFCE</a>
-                                <div class="metadata">
-                                    <span class="date">Hoje às 14:30PM</span>
+                                                            </div>
+                                    </div>
+                                    <div class="comments">
+                                        <div class="comment">
+                                            <a class="avatar">
+                                                <img src="{{asset('img/ifce.png')}}">
+                                            </a>
+                                            <div class="content">
+                                                <a class="author">IFCE</a>
+                                                <div class="metadata">
+                                                    <span class="date">Hoje às 14:30PM</span>
+                                                </div>
+                                                <div class="text">
+                                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
+                                                </div>
+                                                                            <div class="actions">
+                                                                                <a class="reply">Reply</a>
+                                                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text">
-                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
-                                </div>
-                                <!--                            <div class="actions">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="{{asset('img/user-no.png')}}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Maurício Abreu</a>
+                                        <div class="metadata">
+                                            <span class="date">Ontem às 17:42PM</span>
+                                        </div>
+                                        <div class="text">
+                                            Como está o sistema das catracas?
+                                        </div>
+                                                            <div class="actions">
                                                                 <a class="reply">Reply</a>
-                                                            </div>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <a class="avatar">
-                        <img src="{{asset('img/matt.jpg')}}">
-                    </a>
-                    <div class="content">
-                        <a class="author">Honassis Filho</a>
-                        <div class="metadata">
-                            <span class="date">Ontem às 17:42PM</span>
-                        </div>
-                        <div class="text">
-                            Como está o sistema das catracas?
-                        </div>
-                        <!--                    <div class="actions">
-                                                <a class="reply">Reply</a>
-                                            </div>-->
-                    </div>
-                    <div class="comments">
-                        <div class="comment">
-                            <a class="avatar">
-                                <img src="{{asset('img/ifce.png')}}">
-                            </a>
-                            <div class="content">
-                                <a class="author">IFCE</a>
-                                <div class="metadata">
-                                    <span class="date">Hoje às 14:30PM</span>
+                                                            </div>
+                                    </div>
+                                    <div class="comments">
+                                        <div class="comment">
+                                            <a class="avatar">
+                                                <img src="{{asset('img/ifce.png')}}">
+                                            </a>
+                                            <div class="content">
+                                                <a class="author">IFCE</a>
+                                                <div class="metadata">
+                                                    <span class="date">Hoje às 14:30PM</span>
+                                                </div>
+                                                <div class="text">
+                                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
+                                                </div>
+                                                                            <div class="actions">
+                                                                                <a class="reply">Reply</a>
+                                                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text">
-                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
-                                </div>
-                                <!--                            <div class="actions">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="{{asset('img/matt.jpg')}}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Honassis Filho</a>
+                                        <div class="metadata">
+                                            <span class="date">Ontem às 17:42PM</span>
+                                        </div>
+                                        <div class="text">
+                                            Como está o sistema das catracas?
+                                        </div>
+                                                            <div class="actions">
                                                                 <a class="reply">Reply</a>
-                                                            </div>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <a class="avatar">
-                        <img src="{{asset('img/user-no.png')}}">
-                    </a>
-                    <div class="content">
-                        <a class="author">David Silva</a>
-                        <div class="metadata">
-                            <span class="date">Ontem às 17:42PM</span>
-                        </div>
-                        <div class="text">
-                            Como está o sistema das catracas?
-                        </div>
-                        <!--                    <div class="actions">
-                                                <a class="reply">Reply</a>
-                                            </div>-->
-                    </div>
-                    <div class="comments">
-                        <div class="comment">
-                            <a class="avatar">
-                                <img src="{{asset('img/ifce.png')}}">
-                            </a>
-                            <div class="content">
-                                <a class="author">IFCE</a>
-                                <div class="metadata">
-                                    <span class="date">Hoje às 14:30PM</span>
+                                                            </div>
+                                    </div>
+                                    <div class="comments">
+                                        <div class="comment">
+                                            <a class="avatar">
+                                                <img src="{{asset('img/ifce.png')}}">
+                                            </a>
+                                            <div class="content">
+                                                <a class="author">IFCE</a>
+                                                <div class="metadata">
+                                                    <span class="date">Hoje às 14:30PM</span>
+                                                </div>
+                                                <div class="text">
+                                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
+                                                </div>
+                                                                            <div class="actions">
+                                                                                <a class="reply">Reply</a>
+                                                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text">
-                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
-                                </div>
-                                <!--                            <div class="actions">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="{{asset('img/user-no.png')}}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">David Silva</a>
+                                        <div class="metadata">
+                                            <span class="date">Ontem às 17:42PM</span>
+                                        </div>
+                                        <div class="text">
+                                            Como está o sistema das catracas?
+                                        </div>
+                                                            <div class="actions">
                                                                 <a class="reply">Reply</a>
-                                                            </div>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                                            </div>
+                                    </div>
+                                    <div class="comments">
+                                        <div class="comment">
+                                            <a class="avatar">
+                                                <img src="{{asset('img/ifce.png')}}">
+                                            </a>
+                                            <div class="content">
+                                                <a class="author">IFCE</a>
+                                                <div class="metadata">
+                                                    <span class="date">Hoje às 14:30PM</span>
+                                                </div>
+                                                <div class="text">
+                                                    A sua resposta está sendo analizada de acordo com o pensamento do próprio.
+                                                </div>
+                                                                            <div class="actions">
+                                                                                <a class="reply">Reply</a>
+                                                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
             </div>
         </div>
-    </form>
+</div>
+</form>
 </div>
 
 <div class="ui small modal" id="modalBuscarManifestacao">
@@ -261,7 +276,7 @@
                         <a class="avatar">
                             <img src="{{asset('img/ifce.png')}}">
                         </a>
-                        <div class="content">
+                        <div class="content" id="respostaCampus">
                             <a class="author">IFCE</a>
                             <div class="metadata">
                                 <span class="date">Hoje às 14:30PM</span>

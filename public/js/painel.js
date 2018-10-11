@@ -259,7 +259,6 @@ $(document).ready(function () {
         if ($(e.target).hasClass("openDivNone")) {
 
         } else {
-            console.log("Diferente");
             $(".divMae").each(function () {
                 $(this).removeClass("displayblock");
                 $(this).addClass("displaynone");

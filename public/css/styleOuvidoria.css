@@ -332,6 +332,9 @@ i.icon.content {
     right: 64px;
     z-index: 999 !important;
 }
+.ui.card, .ui.cards>.card#cardUser{
+    -webkit-box-shadow: none !important;
+}
 .ulGeral{
     margin: 0 auto;
     text-align: center; 
@@ -479,6 +482,9 @@ i.icon.content {
         right: 29px;
         top: 42px;
     }
+    #fieldInputPesquisarManifestacao{
+        width: 100% !important;
+    }
 }
 
 @media only screen and (min-width: 550px) and (max-width: 717px) {
@@ -532,6 +538,9 @@ i.icon.content {
         right: 29px;
         top: 42px;
     }
+    #fieldInputPesquisarManifestacao{
+        width: 100% !important;
+    }
 }
 
 @media only screen and (min-width: 718px) and (max-width: 849px) {
@@ -576,6 +585,9 @@ i.icon.content {
         right: 29px;
         top: 42px;
     }
+     #fieldInputPesquisarManifestacao{
+        width: 80% !important;
+    }
 }
 
 @media only screen and (min-width: 850px) and (max-width: 910px) {
@@ -618,6 +630,9 @@ i.icon.content {
     .iconsAccount .arrow#informationsUser {
         right: 29px;
         top: 42px;
+    }
+     #fieldInputPesquisarManifestacao{
+        width: 80% !important;
     }
 }
 
@@ -663,6 +678,9 @@ i.icon.content {
         right: 29px;
         top: 42px;
     }
+     #fieldInputPesquisarManifestacao{
+        width: 80% !important;
+    }
 }
 
 /* Computer / Desktop / iPad Landscape */
@@ -705,6 +723,9 @@ i.icon.content {
     .iconsAccount .arrow#informationsUser {
         right: 36px;
         top: 42px;
+    }
+     #fieldInputPesquisarManifestacao{
+        width: 80% !important;
     }
 
 }
@@ -753,6 +774,9 @@ i.icon.content {
     .iconsAccount .arrow#informationsUser {
         right: 36px;
         top: 42px;
+    }
+     #fieldInputPesquisarManifestacao{
+        width: 80% !important;
     }
 }
 
@@ -827,7 +851,7 @@ i.icon.content {
     margin: 1% !important;
 }
 #fieldInputPesquisarManifestacao{
-    width: 20% !important;
+    width: 20%;
 }
 
 

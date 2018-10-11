@@ -19,6 +19,7 @@ and open the template in the editor.
         <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/semantic.min.js') }}" ></script>
         <script type="text/javascript" src="{{ asset('js/painel.js') }}" ></script>
+        <script type="text/javascript" src="{{ asset('js/moment.min.js') }}" ></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.semanticui.min.js"></script>
     </head>
@@ -204,7 +205,7 @@ and open the template in the editor.
                                 <!--<div class="gb_tb"></div>-->
                                 <!--<div class="gb_sb"></div>-->
                                 <div class="ui cards">
-                                    <div class="card">
+                                    <div class="card" id="cardUser">
                                         <div class="content">
                                             <div class="header">
                                                 Seja Bem Vindo, Anderson
