@@ -127,11 +127,11 @@ class ManifestacaoController extends Controller {
 
     public function getDataManifestacao(Request $request) {
         $select = DB::table('manifestacao')
-                        ->select('tipo_resposta_manifestacao.*', 'tipo_manifestacao.*', 'manifestacao.*', 'respostaManifestacao.created_at as respostaDataCreated', 'respostaManifestacao.updated_at as respostaDataUpdated', 'respostaManifestacao.descricaoRespostaManifestacao')
-                        ->join('tipo_resposta_manifestacao', 'manifestacao.idTipoRespostaManifestacaoFk', '=', 'tipo_resposta_manifestacao.idTipoRespostaManifestacao')
-                        ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
-                        ->leftJoin('respostaManifestacao', 'respostaManifestacao.idManifestacaoFk', '=', 'manifestacao.idManifestacao')
-                        ->where('idManifestacao', '=', $request->idManifestacao)->get();
+                    ->select('tipo_resposta_manifestacao.*', 'tipo_manifestacao.*', 'manifestacao.*', 'respostaManifestacao.created_at as respostaDataCreated', 'respostaManifestacao.updated_at as respostaDataUpdated', 'respostaManifestacao.descricaoRespostaManifestacao')
+                    ->join('tipo_resposta_manifestacao', 'manifestacao.idTipoRespostaManifestacaoFk', '=', 'tipo_resposta_manifestacao.idTipoRespostaManifestacao')
+                    ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
+                    ->leftJoin('respostaManifestacao', 'respostaManifestacao.idManifestacaoFk', '=', 'manifestacao.idManifestacao')
+                    ->where('idManifestacao', '=', $request->idManifestacao)->get();
         return response()->json($select);
     }
 
