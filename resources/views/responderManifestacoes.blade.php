@@ -39,13 +39,13 @@
                 <a class="avatar">
                     <img src="{{asset("img/matt.jpg")}}">
                 </a>
-                <div class="content">
-                    <a class="author">Steve Jobes</a>
+                <div class="content" id="pergunta">
+                    <a class="author"></a>
                     <div class="metadata">
-                        <div class="date">03/02/2000</div>
+                        <div class="date"></div>
                     </div>
                     <div class="text">
-                        Incrível, a equipe de desenvolvimento do Campus é foda!
+
                     </div>
                     <!--                    <div class="actions">
                                             <a class="reply active">Responder</a>
