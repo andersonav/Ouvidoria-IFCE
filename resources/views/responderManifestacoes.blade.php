@@ -2,8 +2,16 @@
 <div class="ui divider"></div>
 <div class="">
     <form class="ui form" action="javascript:void(0);">
-        <h4 class="ui header">De acordo com seu número gerado, por favor coloque no campo abaixo</h4>
+        <h4 class="ui header">Manifestações pendentes listadas abaixo.</h4>
+        <div class="divMensagemRetorno" style="display: none;">
+            <div class="ui positive message" id="mensagemRetorno"> 
+                <i class="close icon"></i>
+                <div class="header">Manifestação respondida com sucesso.</div>
+                <p class=""></p>
+            </div>
+        </div>
         <h2 class="ui dividing header">Manifestações</h2>
+
         <table class="ui padded green celled table compact" id = "tabela">
             <thead>
                 <tr>
@@ -13,17 +21,8 @@
                     <th style="width: 15%">Ação</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach($manifestacoes as $manifestacao)
-                <tr>
-                    <td>{{date('d/m/Y', strtotime($manifestacao->created_at))}}</td>
-                    <td>{{$manifestacao->descricaoTipoManifestacao}}</td>
-                    <td>{{$manifestacao->mensagemManifestacao}}</td>
-                    <td>
-                        <a class="ui tiny red icon button actionResponder" data-tooltip="Responder" id="{{$manifestacao->idManifestacao}}"><i class="reply icon"></i></a>
-                    </td>
-                </tr>
-                @endforeach
+            <tbody id="corpoManifestacoesPendentes">
+
             </tbody>
         </table>
 
@@ -51,8 +50,8 @@
                                             <a class="reply active">Responder</a>
                                         </div>-->
                     <form class="ui reply form">
-                        <div class="field">
-                            <textarea></textarea>
+                        <div class="field" id="divRespostaManifestacao">
+                            <textarea id="respostaManifestacao"></textarea>
                         </div>
 
                     </form>
@@ -61,7 +60,7 @@
         </div>
     </div>
     <div class="actions">
-        <div class="ui primary button">
+        <div class="ui primary button btnResponder">
             Responder
         </div>
         <div class="ui cancel button">Cancelar</div>

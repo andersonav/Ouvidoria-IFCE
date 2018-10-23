@@ -20,7 +20,7 @@
                     <td>{{$manifestacao->descricaoTipoManifestacao}}</td>
                     <td>{{$manifestacao->mensagemManifestacao}}</td>
                     <td>
-                        <a class="ui tiny red icon button actionEdit" data-tooltip="Editar" id="{{$manifestacao->idManifestacao}}"><i class="pencil icon"></i></a>
+                        <a class="ui tiny yellow icon button actionEdit" data-tooltip="Editar" id="{{$manifestacao->idManifestacao}}"><i class="pencil icon"></i></a>
                         <a class="ui tiny red icon button actionDelete" data-tooltip="Deletar" id="{{$manifestacao->idManifestacao}}"><i class="trash icon"></i></a>
                     </td>
                 </tr>

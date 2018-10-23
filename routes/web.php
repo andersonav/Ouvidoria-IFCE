@@ -45,7 +45,9 @@ Route::post("/perguntasFrequentes", 'PerguntasFrequentesController@perguntasFreq
 
 /* RESPONDER MANIFESTAÇÕES */
 Route::post("/responderManifestacoes", 'ResponderManifestacoes@responderManifestacoes')->name('responderManifestacoes');
+Route::post("/dadosManifestacoesPendentes", 'ResponderManifestacoes@dadosManifestacoesPendentes')->name('dadosManifestacoesPendentes');
 Route::post("/getDataManifestacaoToResponderManifestacao", 'ResponderManifestacoes@getDataManifestacaoToResponderManifestacao')->name('getDataManifestacaoToResponderManifestacao');
+Route::post("/actionResponderManifestacao", 'ResponderManifestacoes@actionResponderManifestacao')->name('actionResponderManifestacao');
 
 /* EDITAR MANIFESTAÇÕES */
 Route::post("/editarManifestacoes", 'EditarManifestacoes@editarManifestacoes')->name('editarManifestacoes');

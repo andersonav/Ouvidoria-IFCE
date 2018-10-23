@@ -3,18 +3,24 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\RespostaManifestacao;
+use App\Manifestacao;
 use Illuminate\Http\Request;
 
 class ResponderManifestacoes extends Controller {
 
     public function responderManifestacoes() {
+        return view('responderManifestacoes');
+    }
+    
+     public function dadosManifestacoesPendentes() {
         $manifestacoes = DB::table('manifestacao')
                 ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
                 ->orderBy('manifestacao.created_at', 'DESC')
                 ->where('manifestacao.idTipoRespostaManifestacaoFk', '=', 2)
                 ->get();
 
-        return view('responderManifestacoes', compact('manifestacoes'));
+        return response()->json($manifestacoes);
     }
 
     public function getDataManifestacaoToResponderManifestacao(Request $request) {
@@ -24,6 +30,18 @@ class ResponderManifestacoes extends Controller {
                         ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
                         ->where('idManifestacao', '=', $request->idManifestacao)->get();
         return response()->json($select);
+    }
+
+    public function actionResponderManifestacao(Request $request) {
+        $createResposta = RespostaManifestacao::create([
+                    'idManifestacaoFk' => $request->idManifestacao,
+                    'descricaoRespostaManifestacao' => $request->respostaManifestacao
+        ]);
+
+        $updateToRespondida = Manifestacao::where('idManifestacao', '=', $request->idManifestacao)->update(['idTipoRespostaManifestacaoFk' => '1']);
+
+
+        return response()->json($request);
     }
 
 }
