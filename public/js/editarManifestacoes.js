@@ -11,9 +11,108 @@ var table = $('#tabela').DataTable({
     }
 });
 
-$(".actionEditar").click(function () {
+getManifestacoesRespondidas();
+
+function getManifestacoesRespondidas() {
+    $.ajax({
+        type: 'POST',
+        url: '/dadosManifestacoesRespondidas',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }, data: {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                moment.locale('pt-br');
+                var datePergunta = moment(data[i].created_at).format('LLLL');
+                html += "<tr><td>" + datePergunta + "</td><td>" + data[i].descricaoTipoManifestacao + "</td><td>" + data[i].mensagemManifestacao + "</td><td>" + data[i].descricaoRespostaManifestacao + "</td><td> <a class='ui tiny yellow icon button actionEdit' data-tooltip='Editar' id='" + data[i].idManifestacao + "'><i class='pencil icon'></i></a><a class='ui tiny red icon button actionDelete' data-tooltip='Deletar' id='" + data[i].idManifestacao + "'><i class='trash icon'></i></a></td></tr>";
+            }
+            table.destroy();
+            $("#corpoManifestacaoRespondida").html(html);
+            table = $('#tabela').DataTable({
+                "lengthChange": false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+                }
+            });
+
+            functionActionEditAndDelete();
+        }
+    });
+}
+
+function functionActionEditAndDelete() {
+    $(".actionEdit").click(function () {
+        var valorId = $(this).attr("id");
+        $.ajax({
+            type: 'POST',
+            url: '/actionEditManifestacao',
+            async: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                idManifestacao: valorId
+            }, success: function (data, textStatus, jqXHR) {
+                if (data.length > 0) {
+                    moment.locale('pt-br');
+                    var datePergunta = moment(data[0].created_at).format('LLLL');
+                    $(".small.modal .header").html(data[0].descricaoTipoManifestacao + " - " + data[0].assuntoManifestacao);
+//                var date = newDate.toDateString();
+                    var nomeUsuario = returnNameUser(data[0].idTipoIdentificacaoFk, data[0].nomeUsuario);
+                    var pergunta = data[0].mensagemManifestacao;
+                    $("#modalRespostaManifestacao textarea").val(data[0].descricaoRespostaManifestacao);
+                    $("#modalRespostaManifestacao .content#pergunta .author").html(nomeUsuario);
+                    $("#modalRespostaManifestacao .content#pergunta .metadata .date").html(datePergunta);
+                    $("#modalRespostaManifestacao .content#pergunta .text").html(pergunta);
+                    $("#modalRespostaManifestacao .btnEditar").attr("id", valorId);
+                    $('#modalRespostaManifestacao').modal('show');
+                }
+            }
+        });
+    });
+}
+
+$(".btnEditar").click(function () {
     var valorId = $(this).attr("id");
-    console.log(valorId);
-    $('#modalRespostaManifestacao').modal('show');
+    var respostaManifestacao = $("#respostaManifestacao").val();
+
+    if (respostaManifestacao == "") {
+        $("#divRespostaManifestacao").addClass("error");
+    } else {
+        $("#divRespostaManifestacao").removeClass("error");
+        $.ajax({
+            type: 'POST',
+            url: '/actionEditManifestacao',
+            async: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                idManifestacao: valorId,
+                respostaManifestacao: respostaManifestacao
+            }, success: function (data, textStatus, jqXHR) {
+                $("#modalRespostaManifestacao").modal('hide');
+                $(".divMensagemRetorno").css("display", "block");
+                $('.message .close').on('click', function () {
+                    $(this).closest('.message').transition('fade');
+                });
+                getManifestacoesRecentes();
+            }
+        });
+    }
 });
+
+function returnNameUser(idTipoIdentificacaoFk, nome) {
+    var nomeUsuario = "";
+    if (idTipoIdentificacaoFk == 1) {
+        nomeUsuario = nome;
+    } else {
+        nomeUsuario = "Anônimo";
+    }
+    return nomeUsuario;
+}
+
 

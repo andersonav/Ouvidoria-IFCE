@@ -16,8 +16,8 @@ class ResponderManifestacoes extends Controller {
      public function dadosManifestacoesPendentes() {
         $manifestacoes = DB::table('manifestacao')
                 ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
-                ->orderBy('manifestacao.created_at', 'DESC')
                 ->where('manifestacao.idTipoRespostaManifestacaoFk', '=', 2)
+                ->orderBy('manifestacao.created_at', 'DESC')
                 ->get();
 
         return response()->json($manifestacoes);

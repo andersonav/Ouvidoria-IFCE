@@ -17,4 +17,26 @@ class EditarManifestacoes extends Controller {
         return view('editarManifestacoes', compact('manifestacoes'));
     }
 
+    public function dadosManifestacoesRespondidas() {
+        $manifestacao = DB::table('manifestacao')
+                ->select('tipo_resposta_manifestacao.*', 'tipo_manifestacao.*', 'manifestacao.*', 'respostaManifestacao.created_at as respostaDataCreated', 'respostaManifestacao.updated_at as respostaDataUpdated', 'respostaManifestacao.descricaoRespostaManifestacao')
+                ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
+                ->join('tipo_resposta_manifestacao', 'manifestacao.idTipoRespostaManifestacaoFk', '=', 'tipo_resposta_manifestacao.idTipoRespostaManifestacao')
+                ->join('respostaManifestacao', 'respostaManifestacao.idManifestacaoFk', '=', 'manifestacao.idManifestacao')
+                ->get();
+        return response()->json($manifestacao);
+    }
+
+    public function actionEditManifestacao(Request $request) {
+        $manifestacao = DB::table('manifestacao')
+                ->select('tipo_resposta_manifestacao.*', 'tipo_manifestacao.*', 'manifestacao.*', 'respostaManifestacao.created_at as respostaDataCreated', 'respostaManifestacao.updated_at as respostaDataUpdated', 'respostaManifestacao.descricaoRespostaManifestacao')
+                ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
+                ->join('tipo_resposta_manifestacao', 'manifestacao.idTipoRespostaManifestacaoFk', '=', 'tipo_resposta_manifestacao.idTipoRespostaManifestacao')
+                ->join('respostaManifestacao', 'respostaManifestacao.idManifestacaoFk', '=', 'manifestacao.idManifestacao')
+                ->where('manifestacao.idManifestacao', '=', $request->idManifestacao)
+                ->orderBy('manifestacao.created_at', 'DESC')
+                ->get();
+        return response()->json($manifestacao);
+    }
+
 }

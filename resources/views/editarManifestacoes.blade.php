@@ -10,11 +10,12 @@
                     <th>Data</th>
                     <th>Tipo de Manifestação</th>
                     <th>Mensagem</th>
+                    <th>Resposta</th>
                     <th style="width: 15%">Ação</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach($manifestacoes as $manifestacao)
+            <tbody id="corpoManifestacaoRespondida">
+<!--                @foreach($manifestacoes as $manifestacao)
                 <tr>
                     <td>{{date('d/m/Y', strtotime($manifestacao->created_at))}}</td>
                     <td>{{$manifestacao->descricaoTipoManifestacao}}</td>
@@ -24,7 +25,7 @@
                         <a class="ui tiny red icon button actionDelete" data-tooltip="Deletar" id="{{$manifestacao->idManifestacao}}"><i class="trash icon"></i></a>
                     </td>
                 </tr>
-                @endforeach
+                @endforeach-->
             </tbody>
         </table>
 
@@ -40,7 +41,7 @@
                 <a class="avatar">
                     <img src="{{asset("img/matt.jpg")}}">
                 </a>
-                <div class="content">
+                <div class="content" id="pergunta">
                     <a class="author">Steve Jobes</a>
                     <div class="metadata">
                         <div class="date">03/02/2000</div>
@@ -53,7 +54,7 @@
                                         </div>-->
                     <form class="ui reply form">
                         <div class="field">
-                            <textarea></textarea>
+                            <textarea id="respostaManifestacao"></textarea>
                         </div>
 
                     </form>
@@ -62,8 +63,8 @@
         </div>
     </div>
     <div class="actions">
-        <div class="ui primary button">
-            Responder
+        <div class="ui yellow button btnEditar">
+            Editar
         </div>
         <div class="ui cancel button">Cancelar</div>
     </div>

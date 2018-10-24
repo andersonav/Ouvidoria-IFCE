@@ -29,7 +29,7 @@ function getManifestacoesRecentes() {
             for (var i = 0; i < data.length; i++) {
                 moment.locale('pt-br');
                 var datePergunta = moment(data[i].created_at).format('LLLL');
-                html += "<tr><td>" + datePergunta + "</td><td>" + data[i].descricaoTipoManifestacao + "</td><td>" + data[i].mensagemManifestacao + "</td><td> <a class='ui tiny red icon button actionResponder' data-tooltip='Responder' id='" + data[i].idManifestacao + "'><i class='reply icon'></i></a>";
+                html += "<tr><td>" + datePergunta + "</td><td>" + data[i].descricaoTipoManifestacao + "</td><td>" + data[i].mensagemManifestacao + "</td><td> <a class='ui tiny red icon button actionResponder' data-tooltip='Responder' id='" + data[i].idManifestacao + "'><i class='reply icon'></i></a></td></tr>";
             }
             table.destroy();
             $("#corpoManifestacoesPendentes").html(html);
