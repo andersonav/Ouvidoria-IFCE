@@ -53,6 +53,7 @@ Route::post("/actionResponderManifestacao", 'ResponderManifestacoes@actionRespon
 Route::post("/editarManifestacoes", 'EditarManifestacoes@editarManifestacoes')->name('editarManifestacoes');
 Route::post("/dadosManifestacoesRespondidas", 'EditarManifestacoes@dadosManifestacoesRespondidas')->name('dadosManifestacoesRespondidas');
 Route::post("/actionEditManifestacao", 'EditarManifestacoes@actionEditManifestacao')->name('actionEditManifestacao');
+Route::post("/actionEditWhenClick", 'EditarManifestacoes@actionEditWhenClick')->name('actionEditWhenClick');
 
 Auth::routes();
 

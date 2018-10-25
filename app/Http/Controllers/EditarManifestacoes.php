@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\RespostaManifestacao;
 use Illuminate\Http\Request;
 
 class EditarManifestacoes extends Controller {
@@ -37,6 +38,13 @@ class EditarManifestacoes extends Controller {
                 ->orderBy('manifestacao.created_at', 'DESC')
                 ->get();
         return response()->json($manifestacao);
+    }
+
+    public function actionEditWhenClick(Request $request) {
+        $updateManifestacao = RespostaManifestacao::where("idManifestacaoFk", "=", $request->idManifestacao)->update([
+            "descricaoRespostaManifestacao" => $request->respostaManifestacao
+        ]);
+        return response()->json($request);
     }
 
 }

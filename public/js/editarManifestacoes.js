@@ -59,14 +59,16 @@ function functionActionEditAndDelete() {
                 if (data.length > 0) {
                     moment.locale('pt-br');
                     var datePergunta = moment(data[0].created_at).format('LLLL');
+                    var dateResposta = moment(data[0].respostaDataCreated).format('LLLL');
                     $(".small.modal .header").html(data[0].descricaoTipoManifestacao + " - " + data[0].assuntoManifestacao);
 //                var date = newDate.toDateString();
                     var nomeUsuario = returnNameUser(data[0].idTipoIdentificacaoFk, data[0].nomeUsuario);
                     var pergunta = data[0].mensagemManifestacao;
-                    $("#modalRespostaManifestacao textarea").val(data[0].descricaoRespostaManifestacao);
+                    $("#modalRespostaManifestacao #respostaManifestacao").html(data[0].descricaoRespostaManifestacao);
                     $("#modalRespostaManifestacao .content#pergunta .author").html(nomeUsuario);
                     $("#modalRespostaManifestacao .content#pergunta .metadata .date").html(datePergunta);
                     $("#modalRespostaManifestacao .content#pergunta .text").html(pergunta);
+                    $("#modalRespostaManifestacao .content#resposta .metadata .date").html(dateResposta);
                     $("#modalRespostaManifestacao .btnEditar").attr("id", valorId);
                     $('#modalRespostaManifestacao').modal('show');
                 }
@@ -85,7 +87,7 @@ $(".btnEditar").click(function () {
         $("#divRespostaManifestacao").removeClass("error");
         $.ajax({
             type: 'POST',
-            url: '/actionEditManifestacao',
+            url: '/actionEditWhenClick',
             async: false,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -99,7 +101,7 @@ $(".btnEditar").click(function () {
                 $('.message .close').on('click', function () {
                     $(this).closest('.message').transition('fade');
                 });
-                getManifestacoesRecentes();
+                getManifestacoesRespondidas();
             }
         });
     }

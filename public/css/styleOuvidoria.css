@@ -809,15 +809,15 @@ i.icon.content {
     }
 
     .iconsAccount .arrow#system {
-        right: 153px;
+        right: 159px;
     }
 
     .iconsAccount .arrow#notifications {
-        right: 99px;
+        right: 103px;
     }
 
     .iconsAccount .arrow#informationsUser {
-        right: 36px;
+        right: 40px;
         top: 42px;
     }
 }

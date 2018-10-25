@@ -15,17 +15,17 @@
                 </tr>
             </thead>
             <tbody id="corpoManifestacaoRespondida">
-<!--                @foreach($manifestacoes as $manifestacao)
-                <tr>
-                    <td>{{date('d/m/Y', strtotime($manifestacao->created_at))}}</td>
-                    <td>{{$manifestacao->descricaoTipoManifestacao}}</td>
-                    <td>{{$manifestacao->mensagemManifestacao}}</td>
-                    <td>
-                        <a class="ui tiny yellow icon button actionEdit" data-tooltip="Editar" id="{{$manifestacao->idManifestacao}}"><i class="pencil icon"></i></a>
-                        <a class="ui tiny red icon button actionDelete" data-tooltip="Deletar" id="{{$manifestacao->idManifestacao}}"><i class="trash icon"></i></a>
-                    </td>
-                </tr>
-                @endforeach-->
+                <!--                @foreach($manifestacoes as $manifestacao)
+                                <tr>
+                                    <td>{{date('d/m/Y', strtotime($manifestacao->created_at))}}</td>
+                                    <td>{{$manifestacao->descricaoTipoManifestacao}}</td>
+                                    <td>{{$manifestacao->mensagemManifestacao}}</td>
+                                    <td>
+                                        <a class="ui tiny yellow icon button actionEdit" data-tooltip="Editar" id="{{$manifestacao->idManifestacao}}"><i class="pencil icon"></i></a>
+                                        <a class="ui tiny red icon button actionDelete" data-tooltip="Deletar" id="{{$manifestacao->idManifestacao}}"><i class="trash icon"></i></a>
+                                    </td>
+                                </tr>
+                                @endforeach-->
             </tbody>
         </table>
 
@@ -42,24 +42,41 @@
                     <img src="{{asset("img/matt.jpg")}}">
                 </a>
                 <div class="content" id="pergunta">
-                    <a class="author">Steve Jobes</a>
+                    <a class="author"></a>
                     <div class="metadata">
-                        <div class="date">03/02/2000</div>
+                        <div class="date"></div>
                     </div>
                     <div class="text">
-                        Incrível, a equipe de desenvolvimento do Campus é foda!
                     </div>
                     <!--                    <div class="actions">
                                             <a class="reply active">Responder</a>
                                         </div>-->
-                    <form class="ui reply form">
-                        <div class="field">
-                            <textarea id="respostaManifestacao"></textarea>
+                </div>
+                <div class="comments">
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="{{asset("img/ifce.png")}}">
+                        </a>
+                        <div class="content" id="resposta">
+                            <a class="author">IFCE</a>
+                            <div class="metadata">
+                                <div class="date"></div>
+                            </div>
+                            <div class="text">
+                                <form class="ui reply form">
+                                    <div class="field" id="divRespostaManifestacao">
+                                        <textarea id="respostaManifestacao"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--                            <div class="actions">
+                                                            <a class="reply active">Editar</a>
+                                                        </div>-->
                         </div>
-
-                    </form>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
     <div class="actions">
