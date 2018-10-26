@@ -54,6 +54,7 @@ Route::post("/editarManifestacoes", 'EditarManifestacoes@editarManifestacoes')->
 Route::post("/dadosManifestacoesRespondidas", 'EditarManifestacoes@dadosManifestacoesRespondidas')->name('dadosManifestacoesRespondidas');
 Route::post("/actionEditManifestacao", 'EditarManifestacoes@actionEditManifestacao')->name('actionEditManifestacao');
 Route::post("/actionEditWhenClick", 'EditarManifestacoes@actionEditWhenClick')->name('actionEditWhenClick');
+Route::post("/actionDeleteManifestacao", 'EditarManifestacoes@actionDeleteManifestacao')->name('actionDeleteManifestacao');
 
 Auth::routes();
 

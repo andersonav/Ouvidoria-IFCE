@@ -24,6 +24,8 @@
             <tbody id="corpoManifestacoesPendentes">
 
             </tbody>
+            <tfoot>
+            </tfoot>
         </table>
 
     </form>

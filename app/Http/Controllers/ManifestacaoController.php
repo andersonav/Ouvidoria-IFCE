@@ -86,7 +86,8 @@ class ManifestacaoController extends Controller {
                         "setorUsuario" => $request->setor,
                         "idTipoIdentificacaoFk" => $idTipoIdentificacaoFk,
                         "idTipoManifestacaoFk" => $request->tipoManifestacao,
-                        "idTipoRespostaManifestacaoFk" => 2
+                        "idTipoRespostaManifestacaoFk" => 2,
+                        "status" => 1
                     ])->id;
             return response()->json(array('success' => true, 'last_insert_id' => $manifestacao));
         }
@@ -120,6 +121,7 @@ class ManifestacaoController extends Controller {
                 ->join('tipo_resposta_manifestacao', 'manifestacao.idTipoRespostaManifestacaoFk', '=', 'tipo_resposta_manifestacao.idTipoRespostaManifestacao')
                 ->join('respostaManifestacao', 'respostaManifestacao.idManifestacaoFk', '=', 'manifestacao.idManifestacao')
                 ->orderBy('manifestacao.created_at', 'DESC')
+                ->where('manifestacao.status', '=', 1)
                 ->limit(5)
                 ->get();
         return view('buscarManifestacao', compact('manifestacoesRespondidasRecentes'));
@@ -127,11 +129,13 @@ class ManifestacaoController extends Controller {
 
     public function getDataManifestacao(Request $request) {
         $select = DB::table('manifestacao')
-                    ->select('tipo_resposta_manifestacao.*', 'tipo_manifestacao.*', 'manifestacao.*', 'respostaManifestacao.created_at as respostaDataCreated', 'respostaManifestacao.updated_at as respostaDataUpdated', 'respostaManifestacao.descricaoRespostaManifestacao')
-                    ->join('tipo_resposta_manifestacao', 'manifestacao.idTipoRespostaManifestacaoFk', '=', 'tipo_resposta_manifestacao.idTipoRespostaManifestacao')
-                    ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
-                    ->leftJoin('respostaManifestacao', 'respostaManifestacao.idManifestacaoFk', '=', 'manifestacao.idManifestacao')
-                    ->where('idManifestacao', '=', $request->idManifestacao)->get();
+                ->select('tipo_resposta_manifestacao.*', 'tipo_manifestacao.*', 'manifestacao.*', 'respostaManifestacao.created_at as respostaDataCreated', 'respostaManifestacao.updated_at as respostaDataUpdated', 'respostaManifestacao.descricaoRespostaManifestacao')
+                ->join('tipo_resposta_manifestacao', 'manifestacao.idTipoRespostaManifestacaoFk', '=', 'tipo_resposta_manifestacao.idTipoRespostaManifestacao')
+                ->join('tipo_manifestacao', 'manifestacao.idTipoManifestacaoFk', '=', 'tipo_manifestacao.idTipoManifestacao')
+                ->leftJoin('respostaManifestacao', 'respostaManifestacao.idManifestacaoFk', '=', 'manifestacao.idManifestacao')
+                ->where('idManifestacao', '=', $request->idManifestacao)
+                ->where('manifestacao.status', '=', 1)
+                ->get();
         return response()->json($select);
     }
 

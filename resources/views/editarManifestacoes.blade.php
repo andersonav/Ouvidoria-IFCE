@@ -4,7 +4,7 @@
     <form class="ui form" action="javascript:void(0);">
         <h4 class="ui header">De acordo com seu número gerado, por favor coloque no campo abaixo</h4>
         <h2 class="ui dividing header">Manifestações</h2>
-        <table class="ui padded green celled table compact" id = "tabela">
+        <table class="ui padded green celled table compact" id = "tableEditManifestacoes">
             <thead>
                 <tr>
                     <th>Data</th>
@@ -27,6 +27,9 @@
                                 </tr>
                                 @endforeach-->
             </tbody>
+            <tfoot>
+                
+            </tfoot>
         </table>
 
     </form>

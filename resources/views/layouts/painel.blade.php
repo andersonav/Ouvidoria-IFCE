@@ -14,14 +14,9 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}"/>
         <link href="{{ asset('img/favicon.ico') }}" rel="shortcut icon" type="image/vnd.microsoft.icon" />   
         <link rel="stylesheet" type="text/css" href="{{ asset('css/styleOuvidoria.css') }}"/>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.semanticui.min.css') }}" />
 
-        <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/semantic.min.js') }}" ></script>
-        <script type="text/javascript" src="{{ asset('js/painel.js') }}" ></script>
-        <script type="text/javascript" src="{{ asset('js/moment.min.js') }}" ></script>
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.semanticui.min.js"></script>
+
     </head>
     <body>
         <div id="loader"></div>
@@ -236,5 +231,12 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/semantic.min.js') }}" ></script>
+        <script type="text/javascript" src="{{ asset('js/moment.min.js') }}" ></script>
+        <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('js/dataTables.semanticui.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/painel.js') }}" ></script>
+        <script type="text/javascript" src="{{ asset('js/sweetalert2.all.min.js') }}" ></script>
     </body>
 </html>

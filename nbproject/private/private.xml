@@ -7,9 +7,11 @@
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/public/js/responderManifestacoes.js</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/editarManifestacoes.blade.php</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/routes/web.php</file>
+            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/responderManifestacoes.blade.php</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/app/Http/Controllers/EditarManifestacoes.php</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/app/Http/Controllers/ManifestacaoController.php</file>
             <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/public/js/editarManifestacoes.js</file>
+            <file>file:/var/www/html/SistemasEmProducao/laravelouvidoriaifce/resources/views/buscarManifestacao.blade.php</file>
         </group>
     </open-files>
 </project-private>
