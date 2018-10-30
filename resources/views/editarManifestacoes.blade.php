@@ -28,7 +28,7 @@
                                 @endforeach-->
             </tbody>
             <tfoot>
-                
+
             </tfoot>
         </table>
 
@@ -36,57 +36,4 @@
 </div>
 
 
-<div class="ui small modal" id="modalRespostaManifestacao">
-    <div class="header">Manifestação</div>
-    <div class="content">
-        <div class="ui comments" id="divResponderManifestacoes">
-            <div class="comment">
-                <a class="avatar">
-                    <img src="{{asset("img/matt.jpg")}}">
-                </a>
-                <div class="content" id="pergunta">
-                    <a class="author"></a>
-                    <div class="metadata">
-                        <div class="date"></div>
-                    </div>
-                    <div class="text">
-                    </div>
-                    <!--                    <div class="actions">
-                                            <a class="reply active">Responder</a>
-                                        </div>-->
-                </div>
-                <div class="comments">
-                    <div class="comment">
-                        <a class="avatar">
-                            <img src="{{asset("img/ifce.png")}}">
-                        </a>
-                        <div class="content" id="resposta">
-                            <a class="author">IFCE</a>
-                            <div class="metadata">
-                                <div class="date"></div>
-                            </div>
-                            <div class="text">
-                                <form class="ui reply form">
-                                    <div class="field" id="divRespostaManifestacao">
-                                        <textarea id="respostaManifestacao"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                            <!--                            <div class="actions">
-                                                            <a class="reply active">Editar</a>
-                                                        </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="actions">
-        <div class="ui yellow button btnEditar">
-            Editar
-        </div>
-        <div class="ui cancel button">Cancelar</div>
-    </div>
-</div>
 <script type="text/javascript" src="{{asset('js/editarManifestacoes.js')}}"></script>

@@ -155,10 +155,10 @@ $(document).ready(function () {
         showElement(".ui.accordion#accordionSidebar .content", valorId);
         addClassActive(".title", valorId, "activeAccordion");
         addClassActive(".iconsSidebarFix .iconShort .icon", valorId, "active");
-        $(".content .item").each(function () {
+        $(".ui.accordion#accordionSidebar .content .item").each(function () {
             $(this).css("color", "white");
         });
-        if ($(".content#" + valorId).attr("id") != null) {
+        if ($(".ui.accordion#accordionSidebar .content#" + valorId).attr("id") != null) {
             functionAjaxToLoadPageToContent(valorId);
         } else {
             functionAjaxToLoadPage(valorId);
@@ -271,4 +271,64 @@ $(document).ready(function () {
         }
     });
 
+    $(".btnResponder").click(function () {
+        var valorId = $(this).attr("id");
+        var respostaManifestacao = $("#respostaManifestacao").val();
+
+        if (respostaManifestacao == "") {
+            $("#divRespostaManifestacao").addClass("error");
+
+        } else {
+            $("#divRespostaManifestacao").removeClass("error");
+            $.ajax({
+                type: 'POST',
+                url: '/actionResponderManifestacao',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    idManifestacao: valorId,
+                    respostaManifestacao: respostaManifestacao
+                }, success: function (data, textStatus, jqXHR) {
+                    $("#modalRespostaManifestacao").modal('hide');
+                    $(".divMensagemRetorno").css("display", "block");
+                    $('.message .close').on('click', function () {
+                        $(this).closest('.message').transition('fade');
+                    });
+                    getManifestacoesRecentes();
+                }
+            });
+        }
+    });
+
+    $(".btnEditar").click(function () {
+        var valorId = $(this).attr("id");
+        var respostaManifestacao = $("#respostaEditManifestacao").val();
+
+
+        if (respostaManifestacao == "") {
+            $("#divEditManifestacao").addClass("error");
+        } else {
+            $("#divEditManifestacao").removeClass("error");
+            $.ajax({
+                type: 'POST',
+                url: '/actionEditWhenClick',
+                async: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    idManifestacao: valorId,
+                    respostaManifestacao: respostaManifestacao
+                }, success: function (data, textStatus, jqXHR) {
+                    $("#modalEditManifestacao").modal('hide');
+                    $(".divMensagemRetorno").css("display", "block");
+                    $('.message .close').on('click', function () {
+                        $(this).closest('.message').transition('fade');
+                    });
+                    getManifestacoesRespondidas();
+                }
+            });
+        }
+    });
 });

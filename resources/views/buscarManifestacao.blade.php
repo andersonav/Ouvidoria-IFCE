@@ -251,51 +251,5 @@
 </form>
 </div>
 
-<div class="ui small modal" id="modalBuscarManifestacao">
-    <div class="header">Manifestação</div>
-    <div class="content">
-        <div class="ui comments" id="comentariosInBuscarManifestacao">
-            <div class="comment">
-                <a class="avatar">
-                    <img src="{{asset('img/user-no.png')}}">
-                </a>
-                <div class="content" id="pergunta">
-                    <a class="author">David Silva</a>
-                    <div class="metadata">
-                        <span class="date">Ontem às 17:42PM</span>
-                    </div>
-                    <div class="text">
-                        Como está o sistema das catracas?
-                    </div>
-                    <!--                    <div class="actions">
-                                            <a class="reply">Reply</a>
-                                        </div>-->
-                </div>
-                <div class="comments">
-                    <div class="comment">
-                        <a class="avatar">
-                            <img src="{{asset('img/ifce.png')}}">
-                        </a>
-                        <div class="content" id="respostaCampus">
-                            <a class="author">IFCE</a>
-                            <div class="metadata">
-                                <span class="date">Hoje às 14:30PM</span>
-                            </div>
-                            <div class="text">
-                                A sua resposta está sendo analizada de acordo com o pensamento do próprio.
-                            </div>
-                            <!--                            <div class="actions">
-                                                            <a class="reply">Reply</a>
-                                                        </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="actions">
-        <div class="ui cancel button">Cancelar</div>
-    </div>
-</div>
 <script type="text/javascript" src="{{ asset('js/buscarManifestacao.js') }}" ></script>
 

@@ -50,7 +50,7 @@ class EditarManifestacoes extends Controller {
         $updateManifestacao = RespostaManifestacao::where("idManifestacaoFk", "=", $request->idManifestacao)->update([
             "descricaoRespostaManifestacao" => $request->respostaManifestacao
         ]);
-        return response()->json($request);
+        return response()->json($updateManifestacao);
     }
 
     public function actionDeleteManifestacao(Request $request) {

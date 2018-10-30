@@ -238,5 +238,145 @@ and open the template in the editor.
         <script src="{{ asset('js/dataTables.semanticui.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/painel.js') }}" ></script>
         <script type="text/javascript" src="{{ asset('js/sweetalert2.all.min.js') }}" ></script>
+
+        <div class="ui small modal" id="modalRespostaManifestacao">
+            <div class="header">Manifestação</div>
+            <div class="content">
+                <div class="ui comments" id="divResponderManifestacoes">
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="{{asset("img/matt.jpg")}}">
+                        </a>
+                        <div class="content" id="pergunta">
+                            <a class="author"></a>
+                            <div class="metadata">
+                                <div class="date"></div>
+                            </div>
+                            <div class="text">
+
+                            </div>
+                            <!--                    <div class="actions">
+                                                    <a class="reply active">Responder</a>
+                                                </div>-->
+                            <form class="ui reply form">
+                                <div class="field" id="divRespostaManifestacao">
+                                    <textarea id="respostaManifestacao"></textarea>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui primary button btnResponder">
+                    Responder
+                </div>
+                <div class="ui cancel button">Cancelar</div>
+            </div>
+        </div>
+
+
+        <div class="ui small modal" id="modalEditManifestacao">
+            <div class="header">Manifestação</div>
+            <div class="content">
+                <div class="ui comments" id="divEditManifestacoes">
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="{{asset("img/matt.jpg")}}">
+                        </a>
+                        <div class="content" id="pergunta">
+                            <a class="author"></a>
+                            <div class="metadata">
+                                <div class="date"></div>
+                            </div>
+                            <div class="text">
+                            </div>
+                            <!--                    <div class="actions">
+                                                    <a class="reply active">Responder</a>
+                                                </div>-->
+                        </div>
+                        <div class="comments">
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="{{asset("img/ifce.png")}}">
+                                </a>
+                                <div class="content" id="resposta">
+                                    <a class="author">IFCE</a>
+                                    <div class="metadata">
+                                        <div class="date"></div>
+                                    </div>
+                                    <div class="text">
+                                        <form class="ui reply form">
+                                            <div class="field" id="divEditManifestacao">
+                                                <textarea id="respostaEditManifestacao"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!--                            <div class="actions">
+                                                                    <a class="reply active">Editar</a>
+                                                                </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui yellow button btnEditar">
+                    Editar
+                </div>
+                <div class="ui cancel button">Cancelar</div>
+            </div>
+        </div>
+
+
+        <div class="ui small modal" id="modalBuscarManifestacao">
+            <div class="header">Manifestação</div>
+            <div class="content">
+                <div class="ui comments" id="comentariosInBuscarManifestacao">
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="{{asset('img/user-no.png')}}">
+                        </a>
+                        <div class="content" id="pergunta">
+                            <a class="author">David Silva</a>
+                            <div class="metadata">
+                                <span class="date">Ontem às 17:42PM</span>
+                            </div>
+                            <div class="text">
+                                Como está o sistema das catracas?
+                            </div>
+                            <!--                    <div class="actions">
+                                                    <a class="reply">Reply</a>
+                                                </div>-->
+                        </div>
+                        <div class="comments">
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="{{asset('img/ifce.png')}}">
+                                </a>
+                                <div class="content" id="respostaCampus">
+                                    <a class="author">IFCE</a>
+                                    <div class="metadata">
+                                        <span class="date">Hoje às 14:30PM</span>
+                                    </div>
+                                    <div class="text">
+                                        A sua resposta está sendo analizada de acordo com o pensamento do próprio.
+                                    </div>
+                                    <!--                            <div class="actions">
+                                                                    <a class="reply">Reply</a>
+                                                                </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui cancel button">Cancelar</div>
+            </div>
+        </div>
     </body>
 </html>

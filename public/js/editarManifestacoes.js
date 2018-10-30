@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 var table = $('#tableEditManifestacoes').DataTable({
     "lengthChange": false,
     "language": {
@@ -11,12 +10,15 @@ var table = $('#tableEditManifestacoes').DataTable({
     }
 });
 
+getManifestacoesRespondidas();
+
 
 
 function getManifestacoesRespondidas() {
     $.ajax({
         type: 'POST',
         url: '/dadosManifestacoesRespondidas',
+        async: true,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }, data: {
@@ -29,8 +31,10 @@ function getManifestacoesRespondidas() {
                 var datePergunta = moment(data[i].created_at).format('LLLL');
                 html += "<tr><td>" + datePergunta + "</td><td>" + data[i].descricaoTipoManifestacao + "</td><td>" + data[i].mensagemManifestacao + "</td><td>" + data[i].descricaoRespostaManifestacao + "</td><td> <a class='ui tiny yellow icon button actionEdit' data-tooltip='Editar' id='" + data[i].idManifestacao + "'><i class='pencil icon'></i></a><a class='ui tiny red icon button actionDelete' data-tooltip='Deletar' id='" + data[i].idManifestacao + "'><i class='trash icon'></i></a></td></tr>";
             }
-            table = $("#tableEditManifestacoes").dataTable().fnDestroy();
+            table.destroy();
+            $("#corpoManifestacaoRespondida").empty();
             $("#corpoManifestacaoRespondida").html(html);
+
             table = $('#tableEditManifestacoes').DataTable({
                 "lengthChange": false,
                 "language": {
@@ -41,6 +45,7 @@ function getManifestacoesRespondidas() {
             functionActionEditAndDelete();
         }
     });
+
 }
 
 function functionActionEditAndDelete() {
@@ -49,7 +54,7 @@ function functionActionEditAndDelete() {
         $.ajax({
             type: 'POST',
             url: '/actionEditManifestacao',
-            async: true,
+            async: false,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -60,17 +65,17 @@ function functionActionEditAndDelete() {
                     moment.locale('pt-br');
                     var datePergunta = moment(data[0].created_at).format('LLLL');
                     var dateResposta = moment(data[0].respostaDataCreated).format('LLLL');
-                    $(".small.modal .header").html(data[0].descricaoTipoManifestacao + " - " + data[0].assuntoManifestacao);
+                    $("#modalEditManifestacao .small.modal .header").html(data[0].descricaoTipoManifestacao + " - " + data[0].assuntoManifestacao);
 //                var date = newDate.toDateString();
                     var nomeUsuario = returnNameUser(data[0].idTipoIdentificacaoFk, data[0].nomeUsuario);
                     var pergunta = data[0].mensagemManifestacao;
-                    $("#modalRespostaManifestacao #respostaManifestacao").val(data[0].descricaoRespostaManifestacao);
-                    $("#modalRespostaManifestacao .content#pergunta .author").html(nomeUsuario);
-                    $("#modalRespostaManifestacao .content#pergunta .metadata .date").html(datePergunta);
-                    $("#modalRespostaManifestacao .content#pergunta .text").html(pergunta);
-                    $("#modalRespostaManifestacao .content#resposta .metadata .date").html(dateResposta);
-                    $("#modalRespostaManifestacao .btnEditar").attr("id", valorId);
-                    $('#modalRespostaManifestacao').modal('show');
+                    $("#modalEditManifestacao #respostaEditManifestacao").val(data[0].descricaoRespostaManifestacao);
+                    $("#modalEditManifestacao .content#pergunta .author").html(nomeUsuario);
+                    $("#modalEditManifestacao .content#pergunta .metadata .date").html(datePergunta);
+                    $("#modalEditManifestacao .content#pergunta .text").html(pergunta);
+                    $("#modalEditManifestacao .content#resposta .metadata .date").html(dateResposta);
+                    $("#modalEditManifestacao .btnEditar").attr("id", valorId);
+                    $('#modalEditManifestacao').modal('show');
                 }
             }
         });
@@ -108,6 +113,8 @@ function functionActionEditAndDelete() {
 }
 
 
+
+
 function functionDeleteManifestacao(valorId) {
     var boolean = true;
     $.ajax({
@@ -123,37 +130,9 @@ function functionDeleteManifestacao(valorId) {
             boolean = true;
         }
     });
-    return  boolean;
+    return boolean;
 }
-$(".btnEditar").click(function () {
-    var valorId = $(this).attr("id");
-    var respostaManifestacao = $("#respostaManifestacao").val();
 
-    if (respostaManifestacao == "") {
-        $("#divRespostaManifestacao").addClass("error");
-    } else {
-        $("#divRespostaManifestacao").removeClass("error");
-        $.ajax({
-            type: 'POST',
-            url: '/actionEditWhenClick',
-            async: true,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: {
-                idManifestacao: valorId,
-                respostaManifestacao: respostaManifestacao
-            }, success: function (data, textStatus, jqXHR) {
-                $("#modalRespostaManifestacao").modal('hide');
-                $(".divMensagemRetorno").css("display", "block");
-                $('.message .close').on('click', function () {
-                    $(this).closest('.message').transition('fade');
-                });
-                getManifestacoesRespondidas();
-            }
-        });
-    }
-});
 
 function returnNameUser(idTipoIdentificacaoFk, nome) {
     var nomeUsuario = "";
@@ -165,4 +144,3 @@ function returnNameUser(idTipoIdentificacaoFk, nome) {
     return nomeUsuario;
 }
 
-getManifestacoesRespondidas();
