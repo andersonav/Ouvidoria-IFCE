@@ -31,6 +31,12 @@ $("#searchById").click(function () {
                 $("#modalBuscarManifestacao .content#respostaCampus .metadata").html(arrayResposta.dataResposta);
                 $("#modalBuscarManifestacao .content#respostaCampus .text").html(arrayResposta.mensagemResposta);
                 $('#modalBuscarManifestacao').modal('show');
+            } else {
+                swal({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Nenhuma manifestação foi encontrada com esse número!'
+                })
             }
         }
     });
