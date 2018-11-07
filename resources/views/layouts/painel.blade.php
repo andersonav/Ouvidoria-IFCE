@@ -19,8 +19,8 @@ and open the template in the editor.
 
     </head>
     <body>
-        <div id="loader"></div>
         <div class="ui container fluid">
+
             <div class="ui sidebar vertical left menu overlay visible" style="-webkit-transition-duration: 0.1s; overflow-x:  auto !important;" id="sibebarMaior">
                 <!--                <div class="gb_ac">
                                     <i class="openbtn icon content" id="btnDevices"></i>
@@ -228,7 +228,11 @@ and open the template in the editor.
                     <div class="ui container containerPrincipal segment" id="containerToInformations" style="">
                         @yield('content')
                     </div>
+                    <div class="ui active dimmer carregando inverted" style = "height: 110%;">
+                        <div class="ui massive text loader">Carregando...</div>
+                    </div>
                 </div>
+
             </div>
         </div>
         <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>

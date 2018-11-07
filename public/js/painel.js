@@ -16,6 +16,7 @@ $(document).ready(function () {
     $('.menu .item').tab();
     $('.checkbox').checkbox();
     $('select').dropdown();
+    $(".carregando").removeClass('active');//loader
 
 
 

@@ -50,6 +50,7 @@ $("input[name=identificacao]").keyup(function () {
 
 $("#btnEnviar").click(function () {
     var dadosFormulario = $("#formAbrirManifestacao").serialize();
+    $(".carregando").addClass('active');//loader
     $.ajax({
         url: "/logicAbrirManifestacao",
         type: 'POST',
@@ -62,23 +63,36 @@ $("#btnEnviar").click(function () {
             $(".field").each(function () {
                 $(this).removeClass("error");
             });
-            $("#mensagemRetorno").removeClass("negative");
-            $("#mensagemRetorno").addClass("positive");
-            $("#mensagemRetorno .header").html("Manifestação realizada com sucesso");
-            $("#mensagemRetorno p").html("ID da manifestação: <b>00000" + data.last_insert_id + "</b>. <br><b>Obs</b>: Este ID será utilizado para consultar sua manifestação na aba de <b>Buscar Manifestação</b>.");
-            $(".errors").css("display", "block");
+            $(".errors").css("display", "none");
+//            $("#mensagemRetorno").addClass("positive");
+//            $("#mensagemRetorno .header").html("Manifestação realizada com sucesso");
+//            $("#mensagemRetorno p").html("ID da manifestação: <b>00000" + data.last_insert_id + "</b>. <br><b>Obs</b>: Este ID será utilizado para consultar sua manifestação na aba de <b>Buscar Manifestação</b>.");
+//            $(".errors").css("display", "block");
 
             $("#formAbrirManifestacao input:visible").each(function () {
                 $(this).val("");
             });
-
+            $(".carregando").removeClass('active');//loader
             $('select').dropdown('restore defaults');
             $("textarea[name=descricaoMensagem]").val("");
-            $('.message .close').on('click', function () {
-                $(this).closest('.message').transition('fade');
-            });
-
+//            $('.message .close').on('click', function () {
+//                $(this).closest('.message').transition('fade');
+//            });
+            swal({
+                title: '<strong>Manifestação realizada com sucesso!</strong>',
+                type: 'success',
+                html:
+                        'Identificação da manifestação: ' + data.last_insert_id + '.<br>' +
+                        '<b>Obs:</b>Esta identificação será utilizada para consultar sua manifestação na aba de <b>Buscar Manifestação</b>.',
+                showCloseButton: true,
+//                confirmButtonText:
+//                        '<i class="fa fa-thumbs-up"></i> Great!',
+//                confirmButtonAriaLabel: 'Thumbs up, great!',
+//                cancelButtonText:
+//                        '<i class="fa fa-thumbs-down"></i>',
+            })
         }, error: function (errors, textStatus, errorThrown) {
+            $(".carregando").removeClass('active');//loader
             $(".field").removeClass("error");
             $.each(errors.responseJSON, function (key, value) {
 //                $('.errors').append('<div class="ui negative message"> <i class="close icon"></i><div class="header">' + value + '</div></div>');

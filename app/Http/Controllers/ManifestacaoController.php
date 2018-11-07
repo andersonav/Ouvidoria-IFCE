@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Sunra\PhpSimple\HtmlDomParser;
 use Validator;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Manifestacao;
+use App\TipoManifestacao;
 use DB;
 
 class ManifestacaoController extends Controller {
@@ -76,6 +78,8 @@ class ManifestacaoController extends Controller {
             $idTipoIdentificacaoFk = 1;
             if ($request->identificacao == "") {
                 $idTipoIdentificacaoFk = 2;
+            } else {
+                
             }
             $manifestacao = Manifestacao::create([
                         "assuntoManifestacao" => $request->assunto,
@@ -89,6 +93,7 @@ class ManifestacaoController extends Controller {
                         "idTipoRespostaManifestacaoFk" => 2,
                         "status" => 1
                     ])->id;
+            $this->functionEnviarEmail($request->descricaoMensagem, $request->assunto, $request->identificacao, $request->nome, $request->setor, $idTipoIdentificacaoFk, $request->tipoManifestacao);
             return response()->json(array('success' => true, 'last_insert_id' => $manifestacao));
         }
     }
@@ -137,6 +142,23 @@ class ManifestacaoController extends Controller {
                 ->where('manifestacao.status', '=', 1)
                 ->get();
         return response()->json($select);
+    }
+
+    public function functionEnviarEmail($mensagem, $assunto, $identificacao, $nome, $setor, $idTipoIdentificacao, $tipoManifestacao) {
+//        Mail::to('anderson.alvesprogrammer@gmail.com')->send(new enviarEmail());
+        $descricaoTipoManifestacao = TipoManifestacao::where('idTipoManifestacao', $tipoManifestacao)->get();
+        if ($idTipoIdentificacao == 2) {
+            Mail::send('emails.enviarEmailSemIdentificacao', ['mensagem' => $mensagem, 'tipoManifestacao' => $descricaoTipoManifestacao[0]->descricaoInfinitivo, 'assunto' => $assunto], function ($message) {
+                $message->to('anderson.alvesprogrammer@gmail.com');
+                $message->subject('Este é o assunto da mensagem');
+            });
+        } else {
+            Mail::send('emails.enviarEmailComIdentificacao', ['mensagem' => $mensagem, 'tipoManifestacao' => $descricaoTipoManifestacao[0]->descricaoInfinitivo, 'assunto' => $assunto, 'identificacao' => $identificacao, 'nome' => $nome, 'setor' => $setor], function ($message) {
+                $message->to('anderson.alvesprogrammer@gmail.com');
+                $message->subject('Este é o assunto da mensagem');
+            });
+        }
+        return true;
     }
 
 }
