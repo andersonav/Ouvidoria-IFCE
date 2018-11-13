@@ -7,6 +7,14 @@ $('.menu .item').tab();
 $('.checkbox').checkbox('check');
 $('select').dropdown();
 
+$("input[name=assunto]").keyup(function () {
+    $(this).val($(this).val().replace(/\^|#|\?|\*|\%|\@|\¨|\&|\=|\+|\$|\!|\;|\]|\[|\{|\}|\||\§|\<|\>|\°|\£|\¢|\¬|\_|/g, ""));
+});
+
+$("textarea[name=descricaoMensagem]").keyup(function () {
+    $(this).val($(this).val().replace(/\^|#|\?|\*|\%|\@|\¨|\&|\=|\+|\$|\!|\;|\]|\[|\{|\}|\||\§|\<|\>|\°|\£|\¢|\¬|\_|/g, ""));
+});
+
 $('.ui.toggle').checkbox({
     onChecked: function () {
         $('.dadosPessoais').transition('slide down');
@@ -16,34 +24,41 @@ $('.ui.toggle').checkbox({
     }
 });
 
-$("input[name=identificacao]").keyup(function () {
+$("input[name=identificacao]").keyup(function (event) {
     var identificacao = $(this).val();
-    $.ajax({
-        type: 'POST',
-        url: '/getDataUsers',
-        async: false,
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data: {
-            identificacao: identificacao
-        }, success: function (data, textStatus, jqXHR) {
-            var json = JSON.parse(data);
-            if (json.status == 200) {
-                $("input[name=nome]").val(json.data.message[0].nome);
-                $("input[name=setor]").val(json.data.message[0].curso);
-                $("input[name=email]").val(json.data.message[0].email);
-                $("#formAbrirManifestacao .dadosPessoais #camposCatracas").each(function () {
-                    if ($(this).val() == "") {
-                        $(this).val("");
-                        $(this).removeAttr("readonly");
-                    } else {
-                        $(this).attr("readonly", true);
-                    }
-                });
+    $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+    if ((event.which < 48 || event.which > 57)) {
+        event.preventDefault();
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: '/getDataUsers',
+            async: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                identificacao: identificacao
+            }, success: function (data, textStatus, jqXHR) {
+                var json = JSON.parse(data);
+                if (json.status == 200) {
+                    $("input[name=nome]").val(json.data.message[0].nome);
+                    $("input[name=setor]").val(json.data.message[0].curso);
+                    $("input[name=email]").val(json.data.message[0].email);
+                    $("#formAbrirManifestacao .dadosPessoais #camposCatracas").each(function () {
+                        if ($(this).val() == "") {
+                            $(this).val("");
+                            $(this).removeAttr("readonly");
+                        } else {
+                            $(this).attr("readonly", true);
+                        }
+                    });
+                }
             }
-        }
-    });
+        });
+
+    }
+
 
 });
 

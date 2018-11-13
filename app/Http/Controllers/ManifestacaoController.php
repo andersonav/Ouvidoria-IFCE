@@ -148,14 +148,14 @@ class ManifestacaoController extends Controller {
 //        Mail::to('anderson.alvesprogrammer@gmail.com')->send(new enviarEmail());
         $descricaoTipoManifestacao = TipoManifestacao::where('idTipoManifestacao', $tipoManifestacao)->get();
         if ($idTipoIdentificacao == 2) {
-            Mail::send('emails.enviarEmailSemIdentificacao', ['mensagem' => $mensagem, 'tipoManifestacao' => $descricaoTipoManifestacao[0]->descricaoInfinitivo, 'assunto' => $assunto], function ($message) {
+            Mail::send('emails.enviarEmailSemIdentificacao', ['mensagem' => $mensagem, 'tipoManifestacao' => $descricaoTipoManifestacao[0]->descricaoInfinitivo, 'assunto' => $assunto, 'imagemEmail' => $descricaoTipoManifestacao[0]->imagemSrc], function ($message) {
                 $message->to('anderson.alvesprogrammer@gmail.com');
-                $message->subject('Este é o assunto da mensagem');
+                $message->subject('Manifestação sem identificação');
             });
         } else {
-            Mail::send('emails.enviarEmailComIdentificacao', ['mensagem' => $mensagem, 'tipoManifestacao' => $descricaoTipoManifestacao[0]->descricaoInfinitivo, 'assunto' => $assunto, 'identificacao' => $identificacao, 'nome' => $nome, 'setor' => $setor], function ($message) {
+            Mail::send('emails.enviarEmailComIdentificacao', ['mensagem' => $mensagem, 'tipoManifestacao' => $descricaoTipoManifestacao[0]->descricaoInfinitivo, 'assunto' => $assunto, 'identificacao' => $identificacao, 'imagemEmail' => $descricaoTipoManifestacao[0]->imagemSrc, 'nome' => $nome, 'setor' => $setor], function ($message) {
                 $message->to('anderson.alvesprogrammer@gmail.com');
-                $message->subject('Este é o assunto da mensagem');
+                $message->subject('Manifestação com identificação');
             });
         }
         return true;

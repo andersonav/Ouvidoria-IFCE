@@ -51,6 +51,13 @@ and open the template in the editor.
                     <div class="title" id="perguntasFrequentes">
                         <p class="pContent"><i class="question icon"></i><span>Perguntas Frequentes</span></p>
                     </div>
+                    <div class="title" id="manifestacoes">
+                        <p class="pContent"><i class="reply icon"></i><span>Manifestações<span><i class="dropdown icon" id="manifestacoes"></i></span></span></p>
+                    </div>
+                    <div class="content" id="manifestacoes">
+                        <a class="item active" href="javascript:void(0);" id="responderManifestacoes">Pendentes</a>
+                        <a class="item active" href="javascript:void(0);" id="editarManifestacoes">Respondidas</a>
+                    </div>
                 </div>
                 <div class="iconsSidebarFix">
                     <div class="ui dropdown item displaynone iconShort">

@@ -61,7 +61,8 @@ and open the template in the editor.
                             <div class="ui fluid large teal submit button" id="btnLogin"><span class="spanLogin">Login</span><span class="spanIcon"><i class="icon sign in"></i></span></div>
                         </div>
                         <div class="ui message">
-                            <a class="item" style="color: white;" href="{{ route('password.request') }}">Esqueceu sua senha?</a>
+                            <!--<a class="item" style="color: white;" href="{{ route('password.request') }}">Esqueceu sua senha?</a>-->
+                             <a class="item" style="color: white;" href="#">Esqueceu sua senha?</a>
                             <br><br>
                             <a class="item" href="#" style="color: white;">Manual do Usuário</a>
                         </div>
